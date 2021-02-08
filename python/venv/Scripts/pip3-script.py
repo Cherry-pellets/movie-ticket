@@ -1,4 +1,4 @@
-#!D:\02学习资料\00毕业设计\04项目代码\douban_movie_test\venv\Scripts\python.exe -x
+#!D:\02学习资料\00毕业设计\04项目代码\python\venv\Scripts\python.exe -x
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip3'
 __requires__ = 'pip==19.0.3'
 import re

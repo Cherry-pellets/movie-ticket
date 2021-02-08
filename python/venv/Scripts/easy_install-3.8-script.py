@@ -1,4 +1,4 @@
-#!D:\02学习资料\00毕业设计\04项目代码\douban_movie_test\venv\Scripts\python.exe -x
+#!D:\02学习资料\00毕业设计\04项目代码\python\venv\Scripts\python.exe -x
 # EASY-INSTALL-ENTRY-SCRIPT: 'setuptools==40.8.0','console_scripts','easy_install-3.8'
 __requires__ = 'setuptools==40.8.0'
 import re
