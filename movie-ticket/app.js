@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    url: 'http://175.24.117.117:8081'
   }
 })

@@ -1,0 +1,15 @@
+.load-more{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  height: 80rpx;
+}
+.load-img{
+  width: 54rpx;
+  height: 54rpx;
+}
+.load-text{
+  color: #666;
+  font-size: 28rpx;
+}
