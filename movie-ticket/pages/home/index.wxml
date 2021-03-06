@@ -51,7 +51,39 @@
       </swiper-item>
       <!-- 待映 -->
       <swiper-item>
-        <view>222</view>
+        <scroll-view style="margin-top:10rpx;width:100%;white-space: nowrap;border-bottom: 20rpx solid #f5f5f5;" scroll-x="true">
+          <block wx:for-items="{{itemsPop}}" wx:key="id">
+            <view style="margin-top:5rpx;margin-bottom:15rpx">
+              <navigator style="margin-left:15rpx">
+                <view class="popular">
+                  <image class="popular-img" src="{{item.img}}"></image>
+                  <text class="pop-title">{{item.nm}}</text>
+                  <text style="font-size:20rpx;color:#9B9B9B">{{item.wish}}人想看</text>
+                  <text style="font-size:20rpx;color:#9B9B9B">{{item.rt}}</text>
+                </view>
+              </navigator>
+            </view>
+          </block>
+          </scroll-view>
+            <block wx:for-items="{{itemsWait}}" wx:key="id">
+              <navigator>
+                <view class="flex item swiperH">
+                    <view class="item_left">
+                        <image src="{{item.img}}"/>
+                    </view>
+                    <view class="flex_auto item_middle">
+                        <view><text class="title">{{item.nm}}</text></view>
+                        <view><text class="wish">{{item.wish}}</text><text style="font-size: 12px;">人想看</text></view>
+                        <view><text class="sub_title">{{item.dra}}</text></view>
+                        <view><text class="actor">导演：{{item.dir}}</text></view>
+                    </view>
+                    <view class="item_right">
+                        <view><text class="action" wx:if="{{item.showst==1}}">想看</text></view>
+                        <view><text class="action" wx:if="{{item.showst==2}}">预售</text></view>
+                    </view>
+                </view>
+              </navigator>
+          </block>
       </swiper-item>
     </swiper>
     <!-- 加载数据时显示loading图 -->

@@ -1,5 +1,6 @@
 // pages/home/index.js
 const app = getApp();
+const util = require('../../utils/util.js')
 Page({
 
   /**
@@ -18,6 +19,9 @@ Page({
     pageNumHost: 0,
     limit: 6,
     hasMoreHost: true,
+    itemsPop: [],
+    itemsWait: [],
+    pageNumWait: 0,
   },
 
 
@@ -69,6 +73,7 @@ swiperTab: function(e) {
 swiperchange: function() {
 
 },
+// 获取热播电影数据
 getMovieList: function() {
   var that = this;
   var pageNumHost = that.data.pageNumHost;
@@ -96,6 +101,30 @@ getMovieList: function() {
     }
   })
 },
+// 获取待映电影数据
+getMovieWait: function() {
+  var that = this;
+  var pageNumWait = that.data.pageNumWait;
+  var limit = that.data.limit;
+  wx.request({
+    url: app.globalData.url +'/home/getMovieWait',
+    method: 'GET',
+    data: {
+      pageNum: ++pageNumWait,
+      limit: limit
+    },
+    success: function (res) {
+      const itemsWait = that.data.itemsWait.concat(res.data.data.beanList);
+      that.setData({
+        hasMoreWait: pageNumWait < res.data.data.tr,
+        itemsWait: itemsWait,
+        pageNumWait: pageNumWait
+      })
+      if (that.data.currentTab == 1)
+        that.setSwiperHeight();
+    }
+  })
+},
 
   /**
    * 生命周期函数--监听页面加载
@@ -103,7 +132,7 @@ getMovieList: function() {
   onLoad: function (options) {
     var that = this
     //调用应用实例的方法获取全局数据
-    //bannerList
+    //热映bannerList
     wx.request({
       url: app.globalData.url +'/home//getBannerList',
       method: 'GET',
@@ -114,6 +143,25 @@ getMovieList: function() {
     })
     // 获取热映列表
     this.getMovieList()
+    // 待映bannerList
+    wx.request({
+      url: app.globalData.url +'/home/getMoviePop',
+      method: 'GET',
+      data: {},
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function (res) {
+        console.log(res)
+        var list = res.data.data;
+        for (var i in list) {
+          list[i].rt = util.formatDate(new Date(list[i].rt));
+        }
+        that.setData({ itemsPop: list })
+      }
+    })
+    // 获取待映列表
+    this.getMovieWait()
   },
 
   /**
@@ -158,8 +206,8 @@ getMovieList: function() {
     // 上拉到底部，获取更多电影数据
     if (this.data.currentTab == 0 && this.data.hasMoreHost)
       this.getMovieList();
-    // else if (this.data.currentTab == 1 && this.data.hasMoreWait)
-      // this.getMovieWait();
+    else if (this.data.currentTab == 1 && this.data.hasMoreWait)
+      this.getMovieWait();
   },
 
   /**
