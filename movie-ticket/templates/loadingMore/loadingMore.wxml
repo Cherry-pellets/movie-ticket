@@ -1,4 +1,4 @@
-<template class="load-more">
+<template name="loadingMore">
   <view class="load-more">
     <image src="/image/user/loading.gif" class="load-img"></image>
     <view class='load-text'>正在加载...</view>

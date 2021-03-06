@@ -1,5 +1,5 @@
 <!--pages/home/index.wxml-->
-<import src="/templates/loadingMore/loadingMore.wxml"></import>
+<import src="../../templates/loadingMore/loadingMore.wxml"></import>
 <view class="container">
   <view>
     <view class="top-bar" style="background-color: #FFF;">
@@ -17,24 +17,49 @@
     </view>
   </view>
   <view class="content">
-    <swiper duration="300" current="{{currentTab}}" bindchange="swiperTab"> 
+    <swiper style="height:{{swiperViewHeight}}px" duration="300" current="{{currentTab}}" bindchange="swiperTab"> 
       <!-- 热映 -->
       <swiper-item>
         <!-- <view>111</view> -->
         <!-- 轮播图 -->
         <swiper class="banner" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
                 autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange" >
-                <block wx:for-items="{{bannerList}}" wx:key="id">
-                <swiper-item>
-                    <image src="{{item.img}}" class="banner-item"/>
-                </swiper-item>
-            </block>
-              </swiper>
+          <block wx:for-items="{{bannerList}}" wx:key="id">
+            <swiper-item>
+                <image src="{{item.img}}" class="banner-item"/>
+            </swiper-item>
+          </block>
+        </swiper>
+        <block wx:for-items="{{itemsShow}}" wx:key="id">
+          <navigator>
+            <view class="flex item swiperH">
+              <view class="item_left">
+                  <image src="{{item.img}}"/>
+              </view>
+              <view class="flex_auto item_middle">
+                <view><text class="title">{{item.nm}}</text></view>
+                  <view><text class="left_s">评分：</text><text class="score">{{item.sc}}</text></view>
+                <view><text class="sub_title">{{item.dra}}</text></view>
+                <view><text class="actor">导演：{{item.dir}}</text></view>
+              </view>
+              <view class="item_right">
+                  <view><text class="action">购票</text></view>
+              </view>
+              </view>
+          </navigator>
+        </block>
       </swiper-item>
       <!-- 待映 -->
       <swiper-item>
         <view>222</view>
       </swiper-item>
     </swiper>
+    <!-- 加载数据时显示loading图 -->
+    <view wx:if="{{itemsShow.length>0 && hasMoreHost && currentTab==0}}">
+      <template is="loadingMore" />
+    </view>
+    <view wx:if="{{itemsWait.length>0 && hasMoreWait && currentTab==1}}">
+      <template is="loadingMore" />
+    </view>
   </view>
 </view>

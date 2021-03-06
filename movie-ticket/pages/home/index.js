@@ -13,22 +13,53 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1200,
-    bannerList: []
+    bannerList: [],
+    itemsShow: [], //热映
+    pageNumHost: 0,
+    limit: 6,
+    hasMoreHost: true,
   },
 
 
   /**
    * 页面事件
    */
+  // 设置swiper高度
+  setSwiperHeight: function(){
+    var query = wx.createSelectorQuery();
+    //选择id
+    var that = this;
+    var px1 = 208 / 750 * wx.getSystemInfoSync().windowWidth;
+    var px2 = 376 / 750 * wx.getSystemInfoSync().windowWidth;
+    query.selectAll('.swiperH').boundingClientRect(function (rect) {
+      console.log(rect)
+      var itemsLength = 0;
+      if (that.data.currentTab == 0){
+        itemsLength = rect[0].height*that.data.itemsShow.length + px1;
+      }else if(that.data.currentTab == 1){
+        itemsLength = rect[0].height*that.data.itemsWait.length + px2;
+      }
+      that.setData({
+        swiperViewHeight: itemsLength
+      })
+    }).exec();
+  },
 // 点击切换头部tab栏
   clickTab: function(e) {
-    // console.log(e.target.dataset.current)
-    this.setData({
-      currentTab: e.target.dataset.current
-    })
+    var that = this;
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setSwiperHeight();
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
   },
 // 滑动切换tab栏
 swiperTab: function(e) {
+  var that = this;
+  that.setSwiperHeight();
   console.log(e.detail.current)
   this.setData({
     currentTab: e.detail.current
@@ -37,6 +68,33 @@ swiperTab: function(e) {
 // 轮播图
 swiperchange: function() {
 
+},
+getMovieList: function() {
+  var that = this;
+  var pageNumHost = that.data.pageNumHost;
+  var limit = that.data.limit;
+  //playingList
+  wx.request({
+    url: app.globalData.url +'/home/getMovieList',
+    method: 'GET',
+    data: {
+      pageNum: ++pageNumHost,
+      limit: limit
+    },
+    header: {
+      'Accept': 'application/json'
+    },
+    success: function (res) {
+      const itemsShow = that.data.itemsShow.concat(res.data.data.beanList);
+      that.setData({
+        hasMoreHost: pageNumHost < res.data.data.tr,
+        itemsShow: itemsShow,
+        pageNumHost: pageNumHost
+      })
+      if (that.data.currentTab == 0)
+        that.setSwiperHeight();
+    }
+  })
 },
 
   /**
@@ -54,6 +112,8 @@ swiperchange: function() {
         that.setData({ bannerList: res.data.data })
       }
     })
+    // 获取热映列表
+    this.getMovieList()
   },
 
   /**
@@ -95,7 +155,11 @@ swiperchange: function() {
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    // 上拉到底部，获取更多电影数据
+    if (this.data.currentTab == 0 && this.data.hasMoreHost)
+      this.getMovieList();
+    // else if (this.data.currentTab == 1 && this.data.hasMoreWait)
+      // this.getMovieWait();
   },
 
   /**
