@@ -3,7 +3,10 @@
     "pages/home/index",
     "pages/cinema/index",
     "pages/user/user",
-    "pages/top/top"
+    "pages/top/top",
+    "pages/subPages/movie-detail/movie-detail",
+    "pages/subPages/comment-page/comment-page",
+    "pages/subPages/video-page/video-page"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -31,7 +31,7 @@
           </block>
         </swiper>
         <block wx:for-items="{{itemsShow}}" wx:key="id">
-          <navigator>
+          <navigator url='../subPages/movie-detail/movie-detail?movieId={{item.id}}&showst={{item.showst}}'>
             <view class="flex item swiperH">
               <view class="item_left">
                   <image src="{{item.img}}"/>
@@ -54,7 +54,7 @@
         <scroll-view style="margin-top:10rpx;width:100%;white-space: nowrap;border-bottom: 20rpx solid #f5f5f5;" scroll-x="true">
           <block wx:for-items="{{itemsPop}}" wx:key="id">
             <view style="margin-top:5rpx;margin-bottom:15rpx">
-              <navigator style="margin-left:15rpx">
+              <navigator style="margin-left:15rpx" url='../subPages/movie-detail/movie-detail?movieId={{item.id}}&showst={{item.showst}}'>
                 <view class="popular">
                   <image class="popular-img" src="{{item.img}}"></image>
                   <text class="pop-title">{{item.nm}}</text>
@@ -66,7 +66,7 @@
           </block>
           </scroll-view>
             <block wx:for-items="{{itemsWait}}" wx:key="id">
-              <navigator>
+              <navigator  url='../subPages/movie-detail/movie-detail?movieId={{item.id}}&showst={{item.showst}}'>
                 <view class="flex item swiperH">
                     <view class="item_left">
                         <image src="{{item.img}}"/>
