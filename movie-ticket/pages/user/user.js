@@ -1,66 +1,90 @@
-// pages/user/user.js
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    avatarUrl: '/image/user/avatar.png',
+    username: '点击登录',
+    hasUserInfo: false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onShareAppMessage(res) {
+    return {
+      title: '微票电影',
+      path: 'pages/home/home'
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onLoad: function() {
+    this.userAuthorized();
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onShow: function(){
+    this.userAuthorized();
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  userAuthorized() {
+    var _this = this;
+    const userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      //存在则判断服务端session是否过期
+      console.log("判断服务端session是否过期")
+      wx.request({
+        url: app.globalData.url + '/user/isAuth',
+        method: 'GET',
+        header: {
+          'token': userInfo.data.token
+        },
+        success(res) {
+          if (res.data.state == 202) {
+            _this.setData({
+              hasUserInfo: false
+            });
+          } else {
+            _this.setData({
+              hasUserInfo: true
+            });
+          }
+        }
+      })
+    } else {
+      _this.setData({
+        hasUserInfo: false
+      });
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onGetUserInfo(event) {
+    var that = this;
+    const userInfo = event.detail.userInfo
+    if (userInfo) {
+      wx.login({
+        success: function(res_1) {
+          wx.getUserInfo({
+            success: function(res_2) {
+              console.log(res_2)
+              wx.request({
+                url: app.globalData.url + '/user/wxLogin',
+                method: 'POST',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                data: {
+                  code: res_1.code,
+                  nickName: res_2.userInfo.nickName,
+                  avatarUrl: res_2.userInfo.avatarUrl,
+                  gender: res_2.userInfo.gender
+                },
+                success: function(res) {
+                  const userInfo = res.data
+                  console.log("userInfo:" + userInfo)
+                  wx.setStorage({
+                    key: 'userInfo',
+                    data: userInfo
+                  })
+                  that.setData({
+                    hasUserInfo: true
+                  })
+                  app.globalData.userInfo = res_2.userInfo
+                }
+              })
+            }
+          })
+        }
+      })
+    }
   }
 })

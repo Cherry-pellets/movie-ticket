@@ -8,7 +8,13 @@
     "pages/subPages/comment-page/comment-page",
     "pages/subPages/video-page/video-page",
     "pages/subPages/city-select/city-select",
-    "pages/subPages/search-page/search-page"
+    "pages/subPages/search-page/search-page",
+    "pages/subPages/movie-order/movie-order",
+    "pages/subPages/snack-order/snack-order",
+    "pages/subPages/about-page/about-page",
+    "pages/subPages/select-cinema/select-cinema",
+    "/pages/subPages/cinema-detail/cinema-detail",
+    "/pages/subPages/seat/hall"
   ],
   "window":{
     "backgroundTextStyle":"light",

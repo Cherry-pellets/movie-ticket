@@ -56,12 +56,26 @@
 		"conversation": {
 			"list": []
 		},
+		"plugin": {
+      "list": []
+    },
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
-			"list": []
-		}
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "pages/subPages/seat/hall",
+          "pathName": "pages/subPages/seat/hall",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
 	}
 }
