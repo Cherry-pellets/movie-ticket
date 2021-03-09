@@ -45,7 +45,7 @@
 
 .movie-info .showTime {
   font-size: 30rpx;
-  color: #47a86c;
+  color: #FFD000;
 }
 
 .movie-info .position {
@@ -139,7 +139,7 @@
   color: #999;
 }
 .phone{
-  color: #47a86c;
+  color: #FFD000;
 }
 .map-box{
   margin-bottom: 20rpx;

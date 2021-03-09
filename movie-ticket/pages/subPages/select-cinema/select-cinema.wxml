@@ -34,11 +34,11 @@
     <view wx:if='{{cinemas.length>0 && hasMore}}'>
       <template is="loadingMore" />
     </view>
-    <view hidden='{{!nothing }}'>
-      <template is='nothing' data='{{message:"暂无符合条件的影院"}}' />
+    <view hidden='{{cinemas.length > 0}}'>
+      <template is='nothing' data='{{message:"暂无符合条件的数据"}}' />
     </view>
-    <view hidden='{{!noSchedule}}'>
+    <!-- <view hidden='{{!noSchedule}}'>
       <template is='nothing' data='{{message:"当天暂无场次"}}' />
-    </view>
+    </view> -->
   </view>
 </view>

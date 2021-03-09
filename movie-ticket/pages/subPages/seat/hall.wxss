@@ -114,7 +114,7 @@ page{
   margin: 5rpx;
   height: 60rpx;
   width: 60rpx;
-  background: #47a86c;
+  background: #FFD000;
 }
 
 .downContainer {
@@ -163,7 +163,7 @@ page{
   bottom: 0;
   width: 100%;
   height: 100rpx;
-  background: linear-gradient(to right, #55d185, #47a86c);
+  background: linear-gradient(to right, #55d185, #FFD000);
 }
 
 .submit text {

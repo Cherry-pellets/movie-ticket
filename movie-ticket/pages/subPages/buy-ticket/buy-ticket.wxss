@@ -43,7 +43,7 @@
 }
 
 .watch-time {
-  color: #47a86c;
+  color: #FFD000;
 }
 
 .price-box {
@@ -59,7 +59,7 @@
 }
 
 .price-box .price-num {
-  color: #47a86c;
+  color: #FFD000;
   font-size: 30rpx;
 }
 
@@ -80,7 +80,7 @@
   font-size: 32rpx;
 }
 .footer .price-num{
-  color: #47a86c;
+  color: #FFD000;
   font-size: 36rpx;
 }
 .footer .yuan{
@@ -89,7 +89,7 @@
 .payment-btn{
   height: 2.5em;
   line-height: 2.5em;
-  background: #47a86c;
+  background: #FFD000;
   margin: 0 30rpx 20rpx;
   color: #fff;
   text-align: center;

@@ -61,7 +61,7 @@
 .payment-btn {
   height: 2.5em;
   line-height: 2.5em;
-  background: #47a86c;
+  background: #FFD000;
   margin: 0 30rpx 20rpx;
   color: #fff;
   text-align: center;
@@ -70,5 +70,5 @@
 }
 
 .red {
-  color: #47a86c;
+  color: #FFD000;
 }

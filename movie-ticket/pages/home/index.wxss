@@ -108,9 +108,9 @@ width: 100rpx;
 
 .item_right .action {
   margin-top: 40px;
-  border: 1px solid #47a86c;
+  border: 1px solid #FFD000;
   border-radius: 2px;
-  color: #47a86c;
+  color: #FFD000;
   display: inline-block;
   margin-left: 20rpx;
   padding: 2px 4px;
@@ -152,8 +152,8 @@ margin: 0 24rpx;
 font-weight: 700;
 }
 .active{
-  color:#47a86c;
-  border-bottom: 4rpx solid #47a86c;
+  color:#FFD000;
+  border-bottom: 4rpx solid #FFD000;
 }
 
 .search {

@@ -109,7 +109,7 @@
 
 .sellPr {
   line-height: 1;
-  color: #47a86c;
+  color: #FFD000;
   margin-top: 1px;
   font-size: 38rpx;
   margin-right: 10rpx;
@@ -161,7 +161,7 @@
   line-height: 54rpx;
   text-align: center;
   box-sizing: border-box;
-  background-color: #47a86c;
+  background-color: #FFD000;
   color: #fff;
   border-radius: 8rpx;
   white-space: nowrap;
@@ -224,11 +224,11 @@
 
 .num {
   font-size: 30rpx;
-  color: #47a86c;
+  color: #FFD000;
 }
 
 .rmb {
-  color: #47a86c;
+  color: #FFD000;
 }
 
 .font {
