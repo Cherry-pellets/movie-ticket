@@ -15,7 +15,11 @@
     "pages/subPages/select-cinema/select-cinema",
     "pages/subPages/cinema-detail/cinema-detail",
     "pages/subPages/seat/hall",
-    "pages/subPages/buy-ticket/buy-ticket"
+    "pages/subPages/buy-ticket/buy-ticket",
+    "pages/subPages/snack-page/snack-page",
+    "pages/subPages/buy-snack/buy-snack",
+    "pages/subPages/cinema-map/cinema-map",
+    "pages/subPages/movie-order-detail/movie-order-detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

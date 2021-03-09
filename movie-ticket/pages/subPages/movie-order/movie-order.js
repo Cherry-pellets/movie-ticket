@@ -1,66 +1,54 @@
-// pages/subPages/movie-order/movie-order.js
+const app = getApp();
+const util = require("../../../utils/util.js")
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  data:{ 
+    orderList:[]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad(){
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow(){
+    this.initData()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  initData(){
+    var that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success: function(res1) {
+        wx.request({
+          url: app.globalData.url +'/order/getMovieOrder',
+          method: "GET",
+          header:{
+            'token': res1.data.data.token
+          },
+          success(res){
+            console.log(res);
+            if(res.data.state === 202){
+              wx.showModal({
+                content: '您还未登录',
+                success(res) {
+                  wx.switchTab({
+                    url: '/pages/user/user',
+                  })
+                }
+              })
+            }else{
+              res.data.data.forEach(order => { order.time = util.formatYear(new Date(order.time))})
+              that.setData({
+                orderList: res.data.data
+              })
+            }
+          }
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //跳转到订单详情页面
+  goTo(e){
+    const order = e.currentTarget.dataset.order
+    order.Vcode = util.getRandom(100000, 999999)
+    const paramsStr = JSON.stringify(order)
+    wx.navigateTo({
+      url: `../movie-order-detail/movie-order-detail?paramsStr=${paramsStr}`
+    })
   }
 })

@@ -1,66 +1,61 @@
-// pages/subPages/snack-order/snack-order.js
+//其实页面可以和movie-order页面复用
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    orderList: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad() {
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow() {
+    this.initData()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  initData() {
+    var that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success: function (res1) {
+        wx.request({
+          url: app.globalData.url + '/order/getSnackOrder',
+          method: "GET",
+          header: {
+            'token': res1.data.data.token
+          },
+          success(res) {
+            if(res.data.state == 202){
+              wx.showModal({
+                content: '您还未登录',
+                success(res) {
+                  wx.switchTab({
+                    url: '/pages/user/user',
+                  })
+                }
+              })
+            }else{
+              that.setData({
+                orderList: res.data.data
+              })
+            }
+          }
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //删除订单
+  deleteOrder(e) {
+    const index = e.currentTarget.dataset.index;
+    let orderList = this.data.orderList.slice();
+    orderList.splice(index, 1)
+    wx.showModal({
+      title: '提示',
+      content: '确认删除订单吗？',
+      success: (res) => {
+        if (res.confirm) {
+          this.setData({
+            orderList
+          })
+          wx.setStorageSync('snackOrder', orderList)
+        }
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
