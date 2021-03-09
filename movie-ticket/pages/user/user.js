@@ -69,6 +69,7 @@ Page({
                   gender: res_2.userInfo.gender
                 },
                 success: function(res) {
+                  console.log(res)
                   const userInfo = res.data
                   console.log("userInfo:" + userInfo)
                   wx.setStorage({

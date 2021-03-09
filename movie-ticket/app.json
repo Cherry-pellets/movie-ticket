@@ -13,8 +13,9 @@
     "pages/subPages/snack-order/snack-order",
     "pages/subPages/about-page/about-page",
     "pages/subPages/select-cinema/select-cinema",
-    "/pages/subPages/cinema-detail/cinema-detail",
-    "/pages/subPages/seat/hall"
+    "pages/subPages/cinema-detail/cinema-detail",
+    "pages/subPages/seat/hall",
+    "pages/subPages/buy-ticket/buy-ticket"
   ],
   "window":{
     "backgroundTextStyle":"light",
