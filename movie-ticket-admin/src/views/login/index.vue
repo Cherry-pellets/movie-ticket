@@ -21,30 +21,53 @@
 <script>
 import { login } from '@/api/login'
 // import Vue from 'vue'
-// import { Input, Button, Message } from "element-ui";
-// Vue.use(Input);
-// Vue.use(Button);
+// import { Input, Button, Message } from "element-ui"
+import { Message } from "element-ui"
+// Vue.use(Input)
+// Vue.use(Button)
 export default {
   data() {
     return {
       labelPosition: "right",
       adminName: "",
       password: ""
-    };
+    }
   },
   methods: {
     reset() {
-      this.adminName = "";
-      this.password = "";
+      this.adminName = ""
+      this.password = ""
     },
-    toLogin() {
-        console.log(this.adminName, this.password)
-        let json = login({
-                username: this.adminName,
-                password: this.password
-            });
-        console.log(json)
-      // this.network().loginApi()
+    async toLogin() {
+      if (!this.adminName) {
+        Message.error("请输入用户名！")
+      } else if (!this.password) {
+        Message.error("请输入密码！")
+      } else {
+          const { status, data } = await login({
+            username: this.adminName,
+            password: this.password
+            })
+          console.log(data)
+          if (status === 200) {
+            if (data.state === 200) {
+              if(data.data.cineamId){
+                localStorage.setItem("name",data.data.name)
+                localStorage.setItem("avatar",data.data.avatar)
+                localStorage.setItem("cinemaId",data.data.cineamId)
+                this.$router.push({ path: "/business" })
+              }else{
+                localStorage.setItem("name",data.data.name)
+                localStorage.setItem("avatar",data.data.avatar)
+                this.$router.push({ path: "/home" })
+              }
+              Message.success("登录成功!")
+            } else {
+              console.log("登陆失败")
+              Message.error(data.message)
+            }
+          }
+      }
     }
   }
 }
