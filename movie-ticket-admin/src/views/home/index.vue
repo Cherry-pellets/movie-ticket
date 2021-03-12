@@ -35,7 +35,7 @@
                 <span slot="title">用户管理</span>
               </el-menu-item>
               <el-menu-item index="/home/movieManage">
-                <i class="el-icon-s-kpi"></i>
+                <i class="el-icon-s-flag"></i>
                 <span slot="title">电影管理</span>
               </el-menu-item>
               <el-menu-item index="/home/cinemaManage">

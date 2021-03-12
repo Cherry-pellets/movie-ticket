@@ -131,6 +131,7 @@ export default {
             userId: row.id
           });
           if (status ===200 && data.state === 200){
+            console.log(data)
             this.loadCurrentPageUser(this.currentPage,8,this.searchInput);
             Message.success('更改成功');
           }
