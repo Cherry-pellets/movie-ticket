@@ -4,6 +4,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 
 import "@/assets/css/style.css";
+import "@/assets/css/reset.css"
 import 'element-ui/lib/theme-chalk/index.css';
 
 window.getQueryString = function getQueryString (paramName) {
