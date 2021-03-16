@@ -105,7 +105,7 @@
               <el-select v-if="snackInfo.cinemaId" v-model="snackInfo.cinemaId" placeholder="请选择" style="width: 100%">
                 <el-option v-for="(item,index) in cinemaList" :key="index" :label="item.nm" :value="item.id"></el-option>
               </el-select>
-              <el-select v-else v-model="addcinemaId" placeholder="请选择影院" style="width: 100%">
+              <el-select v-else v-model="snackInfo.cinemaId" placeholder="请选择影院" style="width: 100%">
                 <el-option v-for="(item,index) in cinemaList" :key="index" :label="item.nm" :value="item.id"></el-option>
               </el-select>
             </el-col>
@@ -245,9 +245,11 @@
             if (this.snackInfo.imageUrl&&this.snackInfo.firstTitle&&this.snackInfo.secondTitle&&this.snackInfo.price&&this.snackInfo.totalNumber) {
                 if(this.$refs.uploadImg.files[0]){
                     let formData = new FormData();
+                    console.log(this.$refs.uploadImg.files[0])
                     formData.append('img',this.$refs.uploadImg.files[0]);
+                    console.log(formData)
                     let {data, status} = await upLoadFile({
-                      formData: formData
+                      img: formData
                       });
                     if (status === 200 && data.state===200){
                         if (data.data){
