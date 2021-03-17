@@ -29,8 +29,8 @@ spring:
     elasticsearch:
       cluster-name: docker-cluster
       cluster-nodes: localhost:9300
-file:
-  upload-dir: ./upFile
+#file:
+#  upload-dir: ./upFile
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

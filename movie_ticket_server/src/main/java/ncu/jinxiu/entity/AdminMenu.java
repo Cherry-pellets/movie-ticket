@@ -2,7 +2,6 @@ package ncu.jinxiu.entity;
 
 public class AdminMenu {
     private Integer id;
-
     private String permission;
 
     public Integer getId() {
@@ -18,6 +17,6 @@ public class AdminMenu {
     }
 
     public void setPermission(String permission) {
-        this.permission = permission == null ? null : permission.trim();
+        this.permission = permission;
     }
 }
