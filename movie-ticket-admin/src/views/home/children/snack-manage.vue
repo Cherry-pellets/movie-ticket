@@ -248,12 +248,11 @@
                     console.log(this.$refs.uploadImg.files[0])
                     formData.append('img',this.$refs.uploadImg.files[0]);
                     console.log(formData)
-                    let {data, status} = await upLoadFile({
-                      img: formData
-                      });
+                    let {data, status} = await upLoadFile(formData);
                     if (status === 200 && data.state===200){
                         if (data.data){
-                            this.snackInfo.imageUrl = 'https://mokespace.cn/weimai/upFile/'+data.data.img;
+                            // this.snackInfo.imageUrl = 'https://mokespace.cn/weimai/upFile/'+data.data.img;
+                            this.snackInfo.imageUrl = data.data.img;
                         }
                     }else{
                         Message.error(data.message);

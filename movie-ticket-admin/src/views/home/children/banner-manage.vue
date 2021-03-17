@@ -94,7 +94,8 @@
 </template>
 
 <script>
-    import {getBanner,updateBannerInfo,upLoadFile,deleteBannerInfo} from '@/api/banner'
+    import {getBanner,updateBannerInfo,deleteBannerInfo} from '@/api/banner'
+    import { upLoadFile } from '@/api/common'
     import {MessageBox,Message} from 'element-ui'
     export default {
         name: "BannerManage",
@@ -176,7 +177,7 @@
                     });
                     if (status === 200 && data.state===200){
                         if (data.data){
-                            this.bannerInfo.img = 'https://mokespace.cn/weimai/upFile/'+data.data.img;
+                            this.bannerInfo.img = data.data.img;
                         }
                     }else{
                         Message.error(data.message);
