@@ -13,13 +13,6 @@ export const updateBannerInfo = (data) => {
         data: data
     })
 }
-export const upLoadFile = (data) => {
-    return axios({
-        url: '/admin/movie/upLoadFile',
-        method: 'POST',
-        data: data
-    })
-}
 export const deleteBannerInfo = (data) => {
     return axios({
         url: '/admin/banner/deleteBanner',

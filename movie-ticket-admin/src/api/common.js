@@ -4,6 +4,7 @@ export const upLoadFile = (data) => {
     return axios({
         url: '/admin/movie/upLoadFile',
         method: 'POST',
-        data: data
+        data: data,
+        headers: {'Content-Type':'multipart/form-data'}
     })
 }

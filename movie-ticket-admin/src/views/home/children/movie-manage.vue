@@ -286,7 +286,8 @@
 </template>
 
 <script>
-    import {upLoadFile,getCurrentPageMovie,updateMovieInfo,deleteMovieInfo} from '@/api/movie'
+    import {getCurrentPageMovie,updateMovieInfo,deleteMovieInfo} from '@/api/movie'
+    import { upLoadFile } from '@/api/common'
     import {MessageBox,Message} from 'element-ui'
     export default {
         name: "MovieManage",
@@ -509,15 +510,13 @@
           async addImg(){
             let formData = new FormData();
             formData.append('img',this.$refs.uploadImgs.files[0]);
-            let {data, status} = await upLoadFile({
-              formData: formData
-              });
+            let {data, status} = await upLoadFile(formData);
             if (status === 200 && data.state==200){
               // this.movieInfo.photosList.push("file:///E:/file/"+data.data.img);
               if (this.dialogTitle === '编辑电影信息') {
-                this.movieInfo.photosList.push("https://mokespace.cn/weimai/upFile/"+data.data.img);
+                this.movieInfo.photosList.push(data.data.img);
               } else{
-                this.newPhotos.push("https://mokespace.cn/weimai/upFile/"+data.data.img);
+                this.newPhotos.push(data.data.img);
               }
             }
             console.log(this.movieInfo)
@@ -538,9 +537,7 @@
               formData.append('img',this.$refs.uploadImg.files[0]);
               formData.append('videoImg',this.$refs.uploadImg1.files[0]);
               formData.append('video',this.$refs.uploadVideo.files[0]);
-              let {data, status} = await upLoadFile({
-                formData: formData
-                });
+              let {data, status} = await upLoadFile(formData);
               if (status === 200 && data.state===200){
                 if (this.movieInfo.rt) {
                   let date = new Date(this.movieInfo.rt);
@@ -549,11 +546,11 @@
                 }
                 if (data.data){
                   if(data.data.img)
-                    this.movieInfo.img = 'https://mokespace.cn/weimai/upFile/'+data.data.img;
+                    this.movieInfo.img = data.data.img;
                   if(data.data.videoImg)
-                    this.movieInfo.videoImg = 'https://mokespace.cn/weimai/upFile/'+data.data.videoImg;
+                    this.movieInfo.videoImg = data.data.videoImg;
                   if(data.data.video)
-                    this.movieInfo.videoUrl = 'https://mokespace.cn/weimai/upFile/'+data.data.video;
+                    this.movieInfo.videoUrl = data.data.video;
                 }
                 //判断是编辑还是添加
                 if (this.dialogTitle === '编辑电影信息') {
