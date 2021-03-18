@@ -8,9 +8,9 @@ public interface Constant {
     // 请求的网址
     public static final String WX_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session";
     // 你的appid
-    public static final String WX_LOGIN_APPID = "wxdd190f93ac28696b";
+    public static final String WX_LOGIN_APPID = "";
     // 你的密匙
-    public static final String WX_LOGIN_SECRET = "b3b11a55d005052080071a25a723a7a7";
+    public static final String WX_LOGIN_SECRET = "";
     // 固定参数
     public static final String WX_LOGIN_GRANT_TYPE = "authorization_code";
 
@@ -18,7 +18,7 @@ public interface Constant {
     * 腾讯地图
      */
     //key
-    public static  final String  QQ_MAP_KEY = "XXOBZ-PKQWU-26BVI-4RPT3-LV5HQ-OIBQF";
+    public static  final String  QQ_MAP_KEY = "";
     //计算坐标距离
     public static final String QQ_MAP_DISTANCE = "https://apis.map.qq.com/ws/distance/v1/?parameters";
     //搜索城市id
@@ -38,6 +38,6 @@ public interface Constant {
 
     //百度地图
     public static final String BAIDU_MAP_TO = "http://api.map.baidu.com/geocoding/v3/";
-    public static final String BAIDU_MAP_AK = "qimDWkoOflbIZd01GrBOGwrfDNlwUj8S";
+    public static final String BAIDU_MAP_AK = "";
 
 }

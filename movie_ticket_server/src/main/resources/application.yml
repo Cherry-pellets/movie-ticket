@@ -1,7 +1,7 @@
 spring:
   datasource:
-    username: root
-    password: 123456
+    username: 
+    password:
     url: jdbc:mysql://175.24.117.117:3306/movie_ticket?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -29,8 +29,8 @@ spring:
     elasticsearch:
       cluster-name: docker-cluster
       cluster-nodes: localhost:9300
-#file:
-#  upload-dir: ./upFile
+file:
+  upload-dir: ./upFile
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
