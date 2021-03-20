@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### secret ###
+Constant.java
+application.yml
