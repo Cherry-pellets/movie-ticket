@@ -22,3 +22,7 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+
+# secret #
+Constant.java
+application.yml
