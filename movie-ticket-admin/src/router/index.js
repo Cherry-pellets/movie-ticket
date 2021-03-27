@@ -60,19 +60,6 @@ const routes = [
         component: () => import('@/views/home/children/user-manage')
       }
     ]
-  },
-  {
-    path: '/business',
-    name: 'business',
-    component: () => import('@/views/business/business'),
-    redirect: '/business/borderManage',
-    children:[
-      {path:'borderManage',component:() => import('@/views/business/children/order-manage')},
-      {path:'bhallManage',component:() => import('@/views/business/children/hall-manage')},
-      {path:'bmovieSchedule',component:() => import('@/views/business/children/movie-schedule')},
-      {path:'bsnackManage',component:() => import('@/views/business/children/snack-manage')},
-      // {path:'/business',redirect: '/business/borderManage'},
-    ]
   }
 ]
 

@@ -48,19 +48,3 @@ export const getOptions = (data) => {
         params: data
     })
 }
-// 商家获取订单
-export const getCurrentPageBOrder = (data) => {
-    return axios({
-        url: '/admin/order/getOrders',
-        method: 'GET',
-        params: data
-    })
-}
-// 商家获取小吃订单
-export const getBSnacks = (data) => {
-    return axios({
-        url: '/admin/snack/getSnacks',
-        method: 'GET',
-        params: data
-    })
-}

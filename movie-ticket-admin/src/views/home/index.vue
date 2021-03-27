@@ -107,7 +107,7 @@ export default {
       }
     },
     logout() {
-      localStorage.removeItem('admin_id')
+      this.$cookies.remove("admin_id");
       this.$router.push("/login");
       Message.success("退出成功！");
     },
