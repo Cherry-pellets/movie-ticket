@@ -48,3 +48,12 @@ export const commitSeat = (data) => {
         data: data
     })
 }
+
+// 商家获取影厅数据
+export const getCurrentPageBHall = (data) => {
+    return axios({
+        url: '/admin/hall/getHalls',
+        method: 'GET',
+        params: data
+    })
+}

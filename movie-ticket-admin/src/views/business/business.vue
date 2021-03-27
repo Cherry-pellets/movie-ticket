@@ -4,9 +4,10 @@
       <div class="head-bar" v-if="adminInfo.name">
         <div class="left">
           <i class="icon-film-logo" style="font-size: 48px;margin-right: 5px;"></i>
-          <span slot="title" style="font-size: 16px;font-weight: bolder">微麦电影</span>
+          <span slot="title" style="font-size: 16px;font-weight: bolder">日落看电影</span>
         </div>
         <div class="right">
+          <!-- :src="server+adminInfo.avatar" -->
           <img
             :src="adminInfo.avatar"
             class="user-avatar"
@@ -29,46 +30,23 @@
     <el-row class="container">
       <div class="section">
         <div class="nav-bar">
-          <el-menu default-active="/home/user_manage" class="el-menu-vertical" :router="true">
-              <el-menu-item index="/home/userManage">
-                <i class="el-icon-user-solid"></i>
-                <span slot="title">用户管理</span>
-              </el-menu-item>
-              <el-menu-item index="/home/movieManage">
-                <i class="el-icon-s-flag"></i>
-                <span slot="title">电影管理</span>
-              </el-menu-item>
-              <el-menu-item index="/home/cinemaManage">
-                <i class="el-icon-video-camera-solid"></i>
-                <span slot="title">影院管理</span>
-              </el-menu-item>
-              <el-menu-item index="/home/hallManage">
-                <i class="el-icon-bangzhu"></i>
-                <span slot="title">影厅管理</span>
-              </el-menu-item>
-              <el-menu-item index="/home/movieSchedule">
-                <i class="el-icon-s-fold"></i>
-                <span slot="title">电影排片</span>
-              </el-menu-item>
-              <el-menu-item index="/home/commentManage">
-                <i class="el-icon-s-comment"></i>
-                <span slot="title">评论管理</span>
-              </el-menu-item>
-              <el-menu-item index="/home/snackManage">
-                <i class="el-icon-fork-spoon"></i>
-                <span slot="title">小吃管理</span>
-              </el-menu-item>
-              <el-menu-item index="/home/bannerManage">
-                <i class="el-icon-money"></i>
-                <span slot="title">广告管理</span>
-              </el-menu-item>
-              <el-menu-item index="/home/orderManage">
+          <el-menu default-active="/business/borderManage" class="el-menu-vertical" :router="true">
+
+              <el-menu-item index="/business/borderManage">
                 <i class="el-icon-s-ticket"></i>
                 <span slot="title">订单管理</span>
               </el-menu-item>
-              <el-menu-item index="/home/adminManage">
-                <i class="el-icon-s-check"></i>
-                <span slot="title">管理员管理</span>
+              <el-menu-item index="/business/bhallManage">
+                <i class="el-icon-bangzhu"></i>
+                <span slot="title">影厅管理</span>
+              </el-menu-item>
+              <el-menu-item index="/business/bmovieSchedule">
+                <i class="el-icon-s-fold"></i>
+                <span slot="title">电影排片</span>
+              </el-menu-item>
+              <el-menu-item index="/business/bsnackManage">
+                <i class="el-icon-fork-spoon"></i>
+                <span slot="title">小吃管理</span>
               </el-menu-item>
           </el-menu>
         </div>
@@ -79,8 +57,21 @@
 </template>
 
 <script>
-// import Vue from "vue";
-import { Message} from "element-ui";
+import Vue from "vue";
+// import { getAdminInfo } from "../../api";
+import {
+  Message,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  RadioGroup,
+  RadioButton
+} from "element-ui";
+Vue.component(Dropdown.name, Dropdown);
+Vue.component(DropdownMenu.name, DropdownMenu);
+Vue.component(DropdownItem.name, DropdownItem);
+Vue.component(RadioGroup.name, RadioGroup);
+Vue.component(RadioButton.name, RadioButton);
 export default {
   name: "Home",
   data() {
@@ -107,12 +98,12 @@ export default {
       }
     },
     logout() {
-      localStorage.removeItem('admin_id')
+      localStorage.removeItem("admin_id");
       this.$router.push("/login");
       Message.success("退出成功！");
     },
     handleMenuItemClick(path){
-      this.$router.push('/home'+path);
+      this.$router.push('/business'+path);
       this.currentMenuIndex= path;
     }
   }
@@ -125,10 +116,6 @@ export default {
   height: 100%;
   background-color: #fff;
 }
-.header{
-  position: fixed;
-  top: 0;
-}
 .left,
 .right {
   display: flex;
@@ -136,7 +123,6 @@ export default {
   align-items: center;
 }
 .container {
-  margin-top: 64px;
   display: flex;
   justify-content: space-between;
   /* align-items: center; */

@@ -62,3 +62,11 @@ export const deleteMovieSchedule = (data) => {
         data: data
     })
 }
+// 商家获取排片
+export const getCurrentPageBMovieSchedule = (data) => {
+    return axios({
+        url: '/admin/schedule/getMovieSchedule',
+        method: 'GET',
+        params: data
+    })
+}
