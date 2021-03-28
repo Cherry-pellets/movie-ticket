@@ -364,21 +364,21 @@
                 totalArray.push(xxA);//每一行保存到 totalArray 中
               }
               this.seat = totalArray;
-              for(let i=this.seat.length;i<this.ySeat;i++){
+              for(let i=this.seat.length+1;i<=this.ySeat;i++){
                 let xxA = [];
                 let tmp = {};
                 tmp.yCoord = i;
-                tmp.xCoord = 0;
+                tmp.xCoord = 1;
                 tmp.iconSrc = "noSeat.png";
                 xxA.push(tmp);
                 this.seat.push(xxA);
               }
               for(let i=0;i<this.ySeat;i++){
-                for(let j=0;j<this.xSeat;j++){
-                  if(j>this.seat[i].length){
+                for(let j=1;j<this.xSeat;j++){
+                  if(this.seat[i] && j>=this.seat[i].length){
                     let tmp = {};
-                    tmp.yCoord = i;
-                    tmp.xCoord = j;
+                    tmp.yCoord = i + 1;
+                    tmp.xCoord = j +1;
                     tmp.iconSrc = "noSeat.png";
                     this.seat[i].push(tmp);
                   }
