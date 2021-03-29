@@ -313,65 +313,26 @@
             this.seats = [];
             let {data} = await getSeats({hallId: this.hallInfo.id});
             this.seats = data.data;
-            let yArray = [];
-            //遍历座位信息中的 yCoord 行数，保存到 yArray 中
-            if(this.seats.length>0){
-              for (let a = 0; a < this.seats.length; a++) {
-                if (yArray.indexOf(this.seats[a].yCoord) == -1) {
-                  yArray.push(this.seats[a].yCoord);
+            let pos = []
+            for(let i = 0; i < this.ySeat; i++) {
+              pos[i] = []
+              for(let j = 0; j < this.xSeat; j ++) {
+                pos[i][j] = {
+                  xCoord: j + 1,
+                  yCoord: i + 1,
+                  iconSrc: 'noSeat.png',
                 }
               }
-              let totalArray = [];
-              for (let b = 0; b < yArray.length; b++) {
-                let xxA = [];
-                for (let c = 0; c < this.seats.length; c++) {
-                  if (yArray[b] == this.seats[c].yCoord) {
-                    if (this.seats[c].type == "danren") {//单人座
-                        this.seats[c].iconSrc = "seatPre.png";//增加座位图片字段
-                    } else if (this.seats[c].type == "road") {//过道
-                      this.seats[c].iconSrc = "noSeat.png";
-                    } 
-                    xxA.push(this.seats[c]);
-                  }
-                }
-                totalArray.push(xxA);//每一行保存到 totalArray 中
-              }
-              this.seat = totalArray;
-              for(let i=this.seat.length+1;i<=this.ySeat;i++){
-                let xxA = [];
-                let tmp = {};
-                tmp.yCoord = i;
-                tmp.xCoord = 1;
-                tmp.iconSrc = "noSeat.png";
-                xxA.push(tmp);
-                this.seat.push(xxA);
-              }
-              for(let i=0;i<this.ySeat;i++){
-                for(let j=1;j<this.xSeat;j++){
-                  if(this.seat[i] && j>=this.seat[i].length){
-                    let tmp = {};
-                    tmp.yCoord = i + 1;
-                    tmp.xCoord = j + 1;
-                    tmp.iconSrc = "noSeat.png";
-                    this.seat[i].push(tmp);
-                  }
-                }
-              }
-            }else{
-              let totalArray = [];
-              for(let i=0;i<this.ySeat;i++){
-                let xxA = [];
-                for(let j=0;j<this.xSeat;j++){
-                  let tmp = {};
-                  tmp.yCoord = i;
-                  tmp.xCoord = j;
-                  tmp.iconSrc = "noSeat.png";
-                  xxA.push(tmp);
-                }
-                totalArray.push(xxA);
-              }
-              this.seat = totalArray;
             }
+            if (this.seats.length > 0) {
+              for(let i = 0; i < this.seats.length; i++) { // 已存在的(后台传回)替换座位
+                if (this.seats[i].type === 'danren') {
+                  this.seats[i].iconSrc = 'seatPre.png'
+                }
+                pos[this.seats[i].yCoord - 1][this.seats[i].xCoord - 1] = this.seats[i]
+              }
+            }
+            this.seat = pos
             console.log(this.seat)
           },
           changSeat(item,index1,index2){
