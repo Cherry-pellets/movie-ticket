@@ -6,6 +6,7 @@ import ncu.jinxiu.config.util.PageBean;
 import ncu.jinxiu.entity.Days;
 import ncu.jinxiu.entity.Times;
 import ncu.jinxiu.entity.Vo.MovieSchedule;
+import ncu.jinxiu.mapper.CinemaMapper;
 import ncu.jinxiu.mapper.DaysMapper;
 import ncu.jinxiu.mapper.MovieMapper;
 import ncu.jinxiu.mapper.TimesMapper;

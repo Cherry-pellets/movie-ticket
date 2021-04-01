@@ -17,6 +17,7 @@ import ncu.jinxiu.entity.Vo.CinemaFilter;
 import ncu.jinxiu.entity.Vo.CinemaVo;
 import ncu.jinxiu.entity.Vo.SelectCity;
 import ncu.jinxiu.mapper.CinemaBrandMapper;
+import ncu.jinxiu.mapper.CinemaMapper;
 import ncu.jinxiu.mapper.HallTypeMapper;
 import org.elasticsearch.common.unit.DistanceUnit;
 import org.elasticsearch.index.query.QueryStringQueryBuilder;

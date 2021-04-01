@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import ncu.jinxiu.config.util.PageBean;
 import ncu.jinxiu.entity.Hall;
 import ncu.jinxiu.entity.Vo.AdminHall;
+import ncu.jinxiu.mapper.CinemaMapper;
 import ncu.jinxiu.mapper.HallMapper;
 import ncu.jinxiu.mapper.HallTypeMapper;
 import ncu.jinxiu.mapper.SeatMapper;

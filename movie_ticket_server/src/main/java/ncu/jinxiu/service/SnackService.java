@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import ncu.jinxiu.config.util.PageBean;
 import ncu.jinxiu.entity.Snack;
+import ncu.jinxiu.mapper.CinemaMapper;
 import ncu.jinxiu.mapper.SnackMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

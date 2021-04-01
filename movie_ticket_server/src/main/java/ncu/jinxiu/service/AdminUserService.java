@@ -6,6 +6,7 @@ import ncu.jinxiu.config.util.PageBean;
 import ncu.jinxiu.entity.AdminUser;
 import ncu.jinxiu.mapper.AdminRoleMapper;
 import ncu.jinxiu.mapper.AdminUserMapper;
+import ncu.jinxiu.mapper.CinemaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
