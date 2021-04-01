@@ -68,6 +68,5 @@ App({
     isRefresh: false,
     // url: 'http://175.24.117.117:8081'
     url: 'http://localhost:8888',
-    // url: 'https://mokespace.cn/weimai'
   }
 })
