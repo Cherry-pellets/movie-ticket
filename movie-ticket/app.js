@@ -66,8 +66,8 @@ App({
     userLocation: null, //用户的位置信息
     selectCity: null, //用户切换的城市
     isRefresh: false,
-    url: 'http://175.24.117.117:8081'
-    // url: 'http://192.168.1.102:8080',
+    // url: 'http://175.24.117.117:8081'
+    url: 'http://localhost:8888',
     // url: 'https://mokespace.cn/weimai'
   }
 })
