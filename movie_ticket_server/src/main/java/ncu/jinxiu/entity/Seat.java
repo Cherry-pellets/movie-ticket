@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
 @TableName("t_seat")
-public class Seat extends Model<Seat> {
+public class Seat extends Model<Seat> implements Cloneable{
     private Integer id;
 
     private Integer hallId;
@@ -70,5 +70,10 @@ public class Seat extends Model<Seat> {
     @Override
     protected Serializable pkVal() {
         return null;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

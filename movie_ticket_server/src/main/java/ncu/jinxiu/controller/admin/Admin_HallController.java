@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-
 @RestController
 @RequestMapping("/admin/hall")
 @RequiresPermissions("影厅管理")
@@ -100,7 +99,7 @@ public class Admin_HallController {
 
     //修改座位信息
     @PostMapping("/commitSeat")
-    public Result commitSeat(@RequestBody HashMap<String,String> map){
+    public Result commitSeat(@RequestBody HashMap<String,String> map) throws Exception{
         Integer hallId = Integer.parseInt(map.get("hallId"));
         String newSeat = map.get("newSeat");
         String changeSeat = map.get("changeSeat");

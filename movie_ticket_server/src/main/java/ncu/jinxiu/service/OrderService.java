@@ -85,16 +85,25 @@ public class OrderService {
         for(Order order : orderList){
             OrderItem orderItem = new OrderItem();
             Movie movie = movieMapper.getMovieById(order.getItemId());
+            if(movie==null){
+                continue;
+            }
             orderItem.setMovieName(movie.getNm());
             orderItem.setMovieImg(movie.getImg());
             orderItem.setOrderId(order.getOrderId());
             orderItem.setStatus("支付完成");
             orderItem.setOrderPrice(order.getPrice().doubleValue());
             Cinema cinema = timesMapper.getCiemaId(order.getRelateId());
+            if(cinema==null){
+                continue;
+            }
             orderItem.setCinemaId(cinema.getId());
             orderItem.setCinemaName(cinema.getNm());
             orderItem.setSeats(order.getDescribe().substring(0,order.getDescribe().lastIndexOf(",")));
             Times times = timesMapper.selectById(order.getRelateId());
+            if(times==null){
+                continue;
+            }
             orderItem.setHallId(times.getHallId());
             orderItem.setTime(times.getStartTime());
             orderItems.add(orderItem);

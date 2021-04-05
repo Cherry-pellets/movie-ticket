@@ -15,7 +15,7 @@ public interface MovieMapper extends BaseMapper<Movie> {
             "select * from t_movie where showst=3 " +
             "and id in (select movie_id from t_days where cinema_id in " +
             "(select id from t_cinema where addr like '%${addr}%')) "+
-            "order by watched desc,sc desc" +
+            "order by rt desc,watched desc,sc desc" +
             "</script>")
     List<Movie> getList(String addr);
 
@@ -50,12 +50,13 @@ public interface MovieMapper extends BaseMapper<Movie> {
             "and (nm like '%${keyword}%' or enm like '%${keyword}%' " +
             "or cat like '%${keyword}%' or dir like '%${keyword}%' or dra like '%${keyword}%')" +
             "</if>" +
+            "order by rt desc"+
             "</script>")
     List<Movie> getMovies(String keyword);
 
     @Select("select * from t_movie where id!=#{movieId} and showst!=1 and cat like '%${cat}%' limit #{limit}")
     List<Movie> getLikeMovieList(Integer movieId, String cat, Integer limit);
 
-    @Select("select * from t_movie where showst=3")
+    @Select("select * from t_movie where showst=3 order by rt desc")
     List<Movie> getAllMovie();
 }
