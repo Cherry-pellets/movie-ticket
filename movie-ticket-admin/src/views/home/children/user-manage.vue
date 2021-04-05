@@ -122,6 +122,9 @@ export default {
       if (status === 200 && data.state === 200) {
         this.tableData = data.data.beanList;
         this.total = data.data.tr;
+        this.tableData.forEach(element => {
+          element.lastLogin = this.formatTime(element.lastLogin)
+        });
       }
     },
     async handleEdit(index, row) {
@@ -160,6 +163,10 @@ export default {
       this.searchInput = this.input;
       this.loadCurrentPageUser(1, 8, this.searchInput);
     },
+    formatTime(time) {
+      let lastLogin = new Date(time)
+      return lastLogin.toLocaleString()
+    }
   }
 };
 </script>

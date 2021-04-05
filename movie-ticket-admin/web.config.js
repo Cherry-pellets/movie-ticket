@@ -1,5 +1,5 @@
 export default {
   oss: {
-    imgPath: '' // oss图片地址
+    sysImgPath: 'http://movie-ticket.huangjinxiu.site/movie-ticket/sys/' // oss图片地址
   }
 }

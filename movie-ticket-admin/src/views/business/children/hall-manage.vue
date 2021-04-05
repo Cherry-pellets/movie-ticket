@@ -126,7 +126,7 @@
         <div class="seat">
             <div class='x' v-for="(value,index1) in seat" :key="index1">
                 <div class='y' v-for="(item,index2) in value" :key="index2">
-                  <img class="img" :src="require('../../../image/'+item.iconSrc)" @click="changSeat(item,index1,index2)"/>
+                  <img class="img" :src="`${webConfig.oss.sysImgPath}${item.iconSrc}`" @click="changSeat(item,index1,index2)"/>
                 </div>
             </div>
         </div>
@@ -166,12 +166,14 @@
 </template>
 
 <script>
+    import webConfig from '../../../../web.config'
     import {MessageBox,Message} from 'element-ui'
     import {getCurrentPageBHall,deleteHall,updateHallInfo,addHall,getOptions,getSeats,commitSeat} from "@/api/hall";
     export default {
         name: "HallManage",
         data(){
           return{
+            webConfig,
             tableData:[],
             total:0,
             currentPage:1,
@@ -328,6 +330,8 @@
               for(let i = 0; i < this.seats.length; i++) { // 已存在的(后台传回)替换座位
                 if (this.seats[i].type === 'danren') {
                   this.seats[i].iconSrc = 'seatPre.png'
+                } else {
+                  this.seats[i].iconSrc = 'noSeat.png'
                 }
                 pos[this.seats[i].yCoord - 1][this.seats[i].xCoord - 1] = this.seats[i]
               }
