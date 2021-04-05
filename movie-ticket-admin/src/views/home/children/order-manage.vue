@@ -124,6 +124,9 @@
             if (status === 200 && data.state===200){
               this.tableData = data.data.beanList;
               this.total = data.data.tr;
+              this.tableData.forEach(element => {
+                element.createTime = this.formatTime(element.createTime)
+              });
             }
           },
           async currentChange(currentPage){
@@ -149,6 +152,10 @@
             });
             console.log(index, row);
           },
+          formatTime(time) {
+            let lastLogin = new Date(time)
+            return lastLogin.toLocaleString()
+          }
         }
     }
 </script>

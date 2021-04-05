@@ -22,7 +22,7 @@
           prop="name"
         ></el-table-column>
         <el-table-column label="账号" align="center" width="150" prop="username"></el-table-column>
-        <el-table-column label="密码" align="center" width="150" prop="password"></el-table-column>
+        <!-- <el-table-column label="密码" align="center" width="150" prop="password"></el-table-column> -->
         <el-table-column label="所属影院" align="center" show-overflow-tooltip prop="cinemaNm"></el-table-column>
         <el-table-column align="center" width="200" label="操作">
           <template slot-scope="scope">
