@@ -3,7 +3,6 @@
     "pages/home/index",
     "pages/cinema/index",
     "pages/user/user",
-    "pages/top/top",
     "pages/subPages/movie-detail/movie-detail",
     "pages/subPages/comment-page/comment-page",
     "pages/subPages/video-page/video-page",
@@ -37,26 +36,20 @@
     "list": [
       {
         "pagePath": "pages/home/index",
-        "iconPath": "image/user/popular_icon.png",
-        "selectedIconPath": "image/user/popular_active_icon.png",
+        "iconPath": "image/user/movie_tab.png",
+        "selectedIconPath": "image/user/movie_tab_native.png",
         "text": "电影"
       },
       {
         "pagePath": "pages/cinema/index",
-        "iconPath": "image/user/coming_icon.png",
-        "selectedIconPath": "image/user/coming_active_icon.png",
+        "iconPath": "image/user/cinema_tab.png",
+        "selectedIconPath": "image/user/cinema_tab_native.png",
         "text": "影院"
       },
       {
-        "pagePath": "pages/top/top",
-        "iconPath": "image/user/top_icon.png",
-        "selectedIconPath": "image/user/top_active_icon.png",
-        "text": "口碑"
-      },
-      {
         "pagePath": "pages/user/user",
-        "iconPath": "image/user/my_icon.png",
-        "selectedIconPath": "image/user/my_active_icon.png",
+        "iconPath": "image/user/me_tab.png",
+        "selectedIconPath": "image/user/me_tab_native.png",
         "text": "我的"
       }
     ]

@@ -38,7 +38,8 @@ Page({
     }else{
       let history = wx.getStorageSync("history") || [];
       history.push(value)
-      Sync("history", history);
+      // Sync("history", history);
+      wx.setStorageSync('history', history)
     }
     this.setData({
       value,
@@ -77,6 +78,7 @@ Page({
     this.setData({
       history: []
     })
-    Sync("history", [])
+    // Sync("history", [])
+    wx.setStorageSync('history', [])
   },
 })
