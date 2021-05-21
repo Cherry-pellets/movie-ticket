@@ -2,7 +2,9 @@ package ncu.jinxiu.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import ncu.jinxiu.config.util.PageBean;
+import ncu.jinxiu.entity.Cinema;
 import ncu.jinxiu.entity.Snack;
 import ncu.jinxiu.mapper.CinemaMapper;
 import ncu.jinxiu.mapper.SnackMapper;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SnackService {
@@ -25,16 +28,34 @@ public class SnackService {
 
     public PageBean<Snack> getSnack(Integer pageNum, Integer limit, String keyword, Integer cinemaId) {
         PageHelper.startPage(pageNum,limit);
-        List<Snack> snackList = snackMapper.getSnack(keyword,cinemaId);
+        PageInfo pageInfo=null;
         PageBean<Snack> page = new PageBean<>();
-        PageInfo pageInfo = new PageInfo(snackList);
-        page.setPc(pageInfo.getPageNum());
-        page.setTr(pageInfo.getPages());
-        page.setPs(pageInfo.getPageSize());
+
+        List<Snack> snackList = snackMapper.getSnack(keyword,cinemaId);
         for(Snack snack : snackList){
             snack.setCinemaNm(cinemaMapper.selectById(snack.getCinemaId()).getNm());
         }
+        pageInfo= new PageInfo(snackList);
         page.setBeanList(snackList);
+        if(snackList.size()==0){
+            List<Cinema> cinemas = cinemaMapper.selectByNM(keyword);
+            if (cinemas.size()>0) {
+                List<Integer> collect = cinemas.stream().map(c -> {
+                    return c.getId();
+                }).collect(Collectors.toList());
+                List<Snack> snackByCinemaId = snackMapper.getSnackByCinemaId(collect);
+
+                pageInfo= new PageInfo(snackByCinemaId);
+                page.setBeanList(snackByCinemaId);
+
+            }
+        }
+
+
+        page.setPc(pageInfo.getPageNum());
+        page.setTr(pageInfo.getPages());
+        page.setPs(pageInfo.getPageSize());
+
         return page;
     }
 

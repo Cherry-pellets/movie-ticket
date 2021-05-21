@@ -38,7 +38,8 @@ public class UserController {
         String session_key = jsonObject.get("session_key").toString();
         String open_id = jsonObject.get("openid").toString();
 
-        // 根据返回的user实体类，判断用户是否是新用户，不是的话，更新最新登录时间，是的话，将用户信息存到数据库
+        // 根据返回的user实体类，判断用户是否是新用户，不是的话，
+        // 更新最新登录时间，是的话，将用户信息存到数据库
         Subject subject = SecurityUtils.getSubject();
         User user = new User();
         user.setAvatarUrl(avatarUrl);

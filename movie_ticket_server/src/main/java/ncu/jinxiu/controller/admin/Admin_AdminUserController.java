@@ -53,17 +53,19 @@ public class Admin_AdminUserController {
         String username = map.get("username");
         String password = map.get("password");
         Integer roleId = Integer.parseInt(map.get("roleId"));
-        Integer cinemaId = Integer.parseInt(map.get("cineamId"));
         AdminUser user = new AdminUser();
         user.setId(userId);
         user.setName(name);
         user.setUsername(username);
         user.setPassword(password);
-        user.setCineamId(cinemaId);
+        if(map.get("cinemaId") != null) {
+            Integer cinemaId = Integer.parseInt(map.get("cineamId"));
+            user.setCineamId(cinemaId);
+        }
         if(userId!=null)
             adminUserService.updateInfo(user);
         else {
-            user.setAvatar("https://mokespace.cn/kodexplorer/index.php?share/fileProxy&user=1&sid=MEyKNFbx");
+            user.setAvatar("http://movie-ticket.huangjinxiu.site/images/logo.png");
             adminUserService.insertInfo(user);
             adminRoleService.insertInfo(user.getId(),roleId);
         }

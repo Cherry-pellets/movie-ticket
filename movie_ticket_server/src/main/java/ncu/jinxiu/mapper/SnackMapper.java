@@ -2,6 +2,7 @@ package ncu.jinxiu.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import ncu.jinxiu.entity.Snack;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -27,4 +28,16 @@ public interface SnackMapper extends BaseMapper<Snack> {
 
     @Select("select * from t_snack where cinema_id=#{cinemaId}")
     List<Snack> selectByCinemaId(Integer cinemaId);
+
+    @Select("<script>" +
+            "select s.*,c.nm as cinemaNm from t_snack s left join t_cinema c on s.cinema_id=c.id" +
+            " where 1=1 " +
+            "and s.cinema_id in (" +
+            "<foreach collection=\"cinemaId\" item=\"items\"  separator=\",\">" +
+            "       #{items} " +
+            " </foreach>)"+
+
+            " order by s.cur_number desc" +
+            "</script>")
+    List<Snack> getSnackByCinemaId(@Param("cinemaId") List<Integer> cinemaId);
 }

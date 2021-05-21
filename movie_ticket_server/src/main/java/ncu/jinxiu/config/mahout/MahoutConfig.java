@@ -24,7 +24,13 @@ public class MahoutConfig {
 
     @Bean
     public DataModel getMySQLJDBCDataModel(){
-        DataModel dataModel=new MySQLJDBCDataModel(dataSource,"t_comment","user_id","movie_id","sc", "calc_time");
+        DataModel dataModel=new MySQLJDBCDataModel(
+                dataSource,
+                "t_comment",
+                "user_id",
+                "movie_id",
+                "sc",
+                "calc_time");
         return dataModel;
     }
 

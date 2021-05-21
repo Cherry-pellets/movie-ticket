@@ -69,7 +69,7 @@ public class Admin_MovieController {
     @RequiresPermissions("电影管理")
     public Result getMovies(@RequestParam("pageNum") Integer pageNum,
                            @RequestParam("limit") Integer limit,
-                           @RequestParam(value = "keyword",required = false) String keyword){
+                           @RequestParam(value = "input",required = false) String keyword){
         PageBean<Movie> moviePageBean = moviceService.getMovies(pageNum,limit,keyword);
         return new Result(moviePageBean);
     }

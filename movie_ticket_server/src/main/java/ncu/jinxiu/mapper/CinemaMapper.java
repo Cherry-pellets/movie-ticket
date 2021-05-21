@@ -50,4 +50,8 @@ public interface CinemaMapper extends BaseMapper<Cinema> {
 
     @Select("select * from t_cinema where nm like '%${keyword}%' or addr like '%${keyword}%'")
     List<Cinema> getCinema(String keyword);
+
+    @Select("select * from t_cinema where nm like '%${nm}%'")
+    List<Cinema> selectByNM(@Param("nm") String nm);
+
 }

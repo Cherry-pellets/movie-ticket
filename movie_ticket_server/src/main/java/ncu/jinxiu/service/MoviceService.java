@@ -195,8 +195,11 @@ public class MoviceService {
         UserSimilarity similarity  = null;
         Set<Movie> recommendItems = new HashSet<>();
         try {
+            //计算相似度
             similarity = new PearsonCorrelationSimilarity(dataModel);
+            //计算阈值
             NearestNUserNeighborhood  neighbor = new NearestNUserNeighborhood(2, similarity, dataModel);
+            //推荐者
             Recommender recommender = new GenericUserBasedRecommender(dataModel, neighbor,similarity);
             List<RecommendedItem> recommendations = recommender.recommend(userId, size);
             for(int i = 0 ; i < recommendations.size() ; i++) {

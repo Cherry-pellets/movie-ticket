@@ -115,14 +115,16 @@ public class CinemaService {
         Map<String,String> map = new HashMap<>();
         map.put("key", Constant.QQ_MAP_KEY);
         map.put("keyword",cityInfo.getCityName());
-        JSONObject object = JSONObject.parseObject(HttpClientUtil.doGet(Constant.QQ_MAP_SEARCH,map));
+        JSONObject object = JSONObject.parseObject(
+                HttpClientUtil.doGet(Constant.QQ_MAP_SEARCH,map));
         try {
             if(!object.getString("status").equals("0"))
                 throw new QQMapException("QQ_MAP错误");
         } catch (QQMapException e) {
             e.printStackTrace();
         }
-        JSONObject city = object.getJSONArray("result").getJSONArray(0).getJSONObject(0);
+        JSONObject city = object.getJSONArray("result").getJSONArray(0)
+                .getJSONObject(0);
         map.remove("keyword");
         map.put("id",city.getString("id"));
         object = JSONObject.parseObject(HttpClientUtil.doGet(Constant.QQ_MAP_DISTRICT,map));

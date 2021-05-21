@@ -43,7 +43,7 @@ public class Admin_UserController {
     @RequiresPermissions("用户管理")
     public Result getUsers(@RequestParam("pageNum") Integer pageNum,
                            @RequestParam("limit") Integer limit,
-                           @RequestParam(value = "keyword",required = false) String keyword){
+                           @RequestParam(value = "input",required = false) String keyword){
         PageBean<User> userPageBean = userService.getUsers(pageNum,limit,keyword);
         return new Result(userPageBean);
     }

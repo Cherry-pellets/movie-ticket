@@ -85,6 +85,7 @@ public class ShiroConfig {
         return sessionManager;
     }
 
+    // 角色权限控制
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean bean=new ShiroFilterFactoryBean();
