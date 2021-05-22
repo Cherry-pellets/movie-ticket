@@ -20,7 +20,7 @@ Page({
     const stype = query.stype
     let placeholder = ''
     if (stype === '-1') {
-      placeholder = '搜电影、搜影院'
+      placeholder = '搜电影'
     } else {
       placeholder = '搜影院'
     }
@@ -46,7 +46,7 @@ Page({
       history: []
     })
     wx.request({
-      url: app.globalData.url +`/home/search`,
+      url: app.globalData.url +`/home/appSearch`,
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded'

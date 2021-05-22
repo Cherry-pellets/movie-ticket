@@ -1,5 +1,5 @@
 <view class='container'>
-  <view class='header'>
+  <view class='header' style="background-image: url('../../image/logo.png')">
     <image class="avatar" src="{{avatarUrl}}" wx:if="{{!hasUserInfo}}"></image>
     <open-data type="userAvatarUrl" class='avatar' wx:else></open-data>
     <button class="name" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" wx:if="{{!hasUserInfo}}">
@@ -35,11 +35,11 @@
           <text class='iconfont icon-lianxikefu'></text> 客服反馈
         </button>
       </view>
-      <view class='about other-item'>
+      <!-- <view class='about other-item'>
         <navigator url='../subPages/about-page/about-page' hover-class='none'>
           <text class='iconfont icon-guanyuwomen'></text> 关于
         </navigator>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>
