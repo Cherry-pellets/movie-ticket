@@ -46,8 +46,8 @@ module.exports = {
     hotOnly: false,
     proxy: {
       '/api': {
-        // target: 'http://175.24.117.117:8888',
-        target: 'http://localhost:8888',
+        target: 'http://175.24.117.117:8888',
+        // target: 'http://localhost:8888',
         changeOrigin: true,
         pathRewrite: { '^/api': '' } // 这里重写路径/run就代理到对应地址
       }

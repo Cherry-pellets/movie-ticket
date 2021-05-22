@@ -4,7 +4,7 @@
       <div class="head-bar" v-if="adminInfo.name">
         <div class="left">
           <i class="icon-film-logo" style="font-size: 48px;margin-right: 5px;"></i>
-          <span slot="title" style="font-size: 16px;font-weight: bolder">微麦电影</span>
+          <span slot="title" style="font-size: 16px;font-weight: bolder">电影后台管理系统</span>
         </div>
         <div class="right">
           <img
@@ -58,10 +58,10 @@
                 <i class="el-icon-fork-spoon"></i>
                 <span slot="title">小吃管理</span>
               </el-menu-item>
-              <el-menu-item index="/home/bannerManage">
+              <!-- <el-menu-item index="/home/bannerManage">
                 <i class="el-icon-money"></i>
                 <span slot="title">广告管理</span>
-              </el-menu-item>
+              </el-menu-item> -->
               <el-menu-item index="/home/orderManage">
                 <i class="el-icon-s-ticket"></i>
                 <span slot="title">订单管理</span>

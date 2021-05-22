@@ -4,7 +4,7 @@
       <div class="head-bar" v-if="adminInfo.name">
         <div class="left">
           <i class="icon-film-logo" style="font-size: 48px;margin-right: 5px;"></i>
-          <span slot="title" style="font-size: 16px;font-weight: bolder">日落看电影</span>
+          <span slot="title" style="font-size: 16px;font-weight: bolder">电影后台管理系统</span>
         </div>
         <div class="right">
           <!-- :src="server+adminInfo.avatar" -->

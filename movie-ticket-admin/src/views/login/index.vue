@@ -1,8 +1,8 @@
 <template>
   <div id="login" style="background: url('/images/bg_admin.png'); background-size: cover;">
       <div class="box">
-        <el-form :label-position="labelPosition" label-width="50px">
-            <h3>微麦电影管理系统</h3>
+        <el-form :label-position="labelPosition" label-width="50px" @keyup.enter.native="toLogin">
+            <h3>电影后台管理系统</h3>
             <el-form-item label="用户">
             <el-input v-model="adminName" clearable placeholder="请输入用户名"></el-input>
             </el-form-item>
@@ -11,7 +11,7 @@
             </el-form-item>
             <el-form-item style="margin-top: 30px">
             <el-button @click="reset">重置</el-button>
-            <el-button native-type="submit" type="primary" size="medium" @click="toLogin">登录</el-button>
+            <el-button type="primary" size="medium" @click="toLogin">登录</el-button>
             </el-form-item>
         </el-form>
       </div>
