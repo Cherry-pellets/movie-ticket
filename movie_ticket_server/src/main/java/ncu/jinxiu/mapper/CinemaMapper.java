@@ -54,4 +54,8 @@ public interface CinemaMapper extends BaseMapper<Cinema> {
     @Select("select * from t_cinema where nm like '%${nm}%'")
     List<Cinema> selectByNM(@Param("nm") String nm);
 
+    @Select("select c.*,(abs(${latitude}-latitude)+abs(${longitude}-longitude)) as v from t_cinema c where nm like '%${keyword}%' order by v limit 10")
+    List<Cinema> appSearchCinema(@Param("keyword")String keyword,@Param("latitude")Double latitude,@Param("longitude")Double longitude);
+
+
 }

@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -145,6 +146,49 @@ public class HomeController {
         return new Result(searchRes);
     }
 
+    @PostMapping("/appSearch")
+    public Result appSearch(@RequestParam("keyword") String keyword,
+                         @RequestParam("stype") Integer stype,
+                         @RequestParam("selectCity") String selectCity){
+        JSONObject object = JSONObject.parseObject(selectCity);
+        SelectCity cityInfo = object.toJavaObject(SelectCity.class);
+        SearchRes searchRes = new SearchRes();
+        if(stype == -1){
+            List<Movie> movies = moviceService.appMovieSelect(keyword);
+//                    movieRepository.findByNmLikeOrDirLikeOrCatLikeOrDraLikeOrStarContains(keyword,keyword,keyword,keyword,keyword);
+//            List<CinemaVo> cinemas = searchCinema(keyword,cityInfo);
+            searchRes.setMovies(movies);
+//            searchRes.setCinemaVos(cinemas);
+        }else if(stype == 2){
+            List<CinemaVo> cinemas = appSearchCinema(keyword,cityInfo);
+            searchRes.setCinemaVos(cinemas);
+        }
+        return new Result(searchRes);
+    }
+
+    private List<CinemaVo> appSearchCinema(String keyword,SelectCity cityInfo){
+        List<Cinema> cinemas = cinemaService.appSearchCinema(keyword,
+                cityInfo.getLatitude().doubleValue(),
+                cityInfo.getLongitude().doubleValue());
+        cinemas.forEach(emp->{
+            GeoPoint geoPoint = new GeoPoint(emp.getLatitude().doubleValue(),emp.getLongitude().doubleValue());
+            emp.setLocation(geoPoint);
+            double distance = GeoDistance.ARC.calculate(
+                    cityInfo.getLatitude().doubleValue(),
+                    cityInfo.getLongitude().doubleValue(),
+                    emp.getLocation().getLat(),emp.getLocation().getLon(),
+                    DistanceUnit.KILOMETERS);
+            emp.setDistance(new BigDecimal(distance).setScale(1,BigDecimal.ROUND_HALF_UP));
+        });
+        List<CinemaVo> cinemaVoList = new ArrayList<CinemaVo>();
+        for(Cinema cinema : cinemas){
+            CinemaVo cinemaVo = new CinemaVo();
+            cinemaVo.setCinema(cinema);
+            cinemaVo.setHallTypeList(hallTypeMapper.getHallTypeByCinemaId(cinema.getId()));
+            cinemaVoList.add(cinemaVo);
+        }
+        return  cinemaVoList;
+    }
     private List<CinemaVo> searchCinema(String keyword,SelectCity cityInfo){
         Page<Cinema> page =  cinemaService.findPage(keyword,
                 cityInfo.getLatitude().doubleValue(),

@@ -1,9 +1,11 @@
 package ncu.jinxiu.service;
 
+import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import ncu.jinxiu.config.es.CinemaRepository;
 import ncu.jinxiu.config.exception.QQMapException;
 import ncu.jinxiu.config.map.QQMapUtil;
@@ -189,6 +191,13 @@ public class CinemaService {
         nativeSearchQueryBuilder.withSort(distanceSortBuilder);
 
         return cinemaRepository.search(nativeSearchQueryBuilder.build());
+    }
+
+    public List<Cinema>  appSearchCinema(String keyword,Double latitude,Double longitude){
+        if(StringUtils.isEmpty(keyword)){
+            return Lists.newArrayList();
+        }
+        return cinemaMapper.appSearchCinema(keyword,latitude,longitude);
     }
 
 

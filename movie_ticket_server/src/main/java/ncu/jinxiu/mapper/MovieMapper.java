@@ -57,6 +57,10 @@ public interface MovieMapper extends BaseMapper<Movie> {
     @Select("select * from t_movie where id!=#{movieId} and showst!=1 and cat like '%${cat}%' limit #{limit}")
     List<Movie> getLikeMovieList(Integer movieId, String cat, Integer limit);
 
+    @Select("select * from t_movie where nm like '%${keyword}%' order by rt desc  limit #{limit}")
+    List<Movie> appMovieSelect(String keyword, Integer limit);
+
+
     @Select("select * from t_movie where showst=3 order by rt desc")
     List<Movie> getAllMovie();
 }

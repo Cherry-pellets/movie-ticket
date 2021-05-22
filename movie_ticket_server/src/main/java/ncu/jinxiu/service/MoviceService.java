@@ -1,7 +1,9 @@
 package ncu.jinxiu.service;
 
+import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import ncu.jinxiu.config.es.MovieRepository;
 import ncu.jinxiu.config.util.PageBean;
 import ncu.jinxiu.entity.Days;
@@ -213,5 +215,12 @@ public class MoviceService {
             recommendItems.addAll(movieMapper.getLikeMovieList(movieId,cat,3-recommendItems.size()));
         }
         return recommendItems;
+    }
+
+    public List<Movie> appMovieSelect(String keyword){
+        if(StringUtils.isEmpty(keyword)){
+            return Lists.newArrayList();
+        }
+        return movieMapper.appMovieSelect(keyword,10);
     }
 }
