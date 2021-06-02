@@ -113,7 +113,7 @@ export default {
 <style scoped>
 #home {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-color: #fff;
 }
 .left,
@@ -144,7 +144,7 @@ export default {
 .nav-bar {
   width: 10%;
   min-width: 200px;
-  border-bottom: 1px solid #e9eaeb;
+  /* border-bottom: 1px solid #e9eaeb; */
 }
 .container .content {
   width: 90%;

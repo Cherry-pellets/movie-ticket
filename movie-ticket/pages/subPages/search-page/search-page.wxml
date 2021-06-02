@@ -25,7 +25,7 @@
           <view class='movie-name line-ellipsis'>{{movie.nm}}
             <text class='version {{movie.version}}'></text>
           </view>
-          <view class='line-ellipsis'>{{movie.enm}}</view>
+          <view class='line-ellipsis'>{{movie.enm || '暂无英文名'}}</view>
           <view class='line-ellipsis'>{{movie.cat}}</view>
           <view class='line-ellipsis'>{{movie.rt}}</view>
         </view>

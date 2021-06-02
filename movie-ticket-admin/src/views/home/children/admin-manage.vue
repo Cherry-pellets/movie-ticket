@@ -43,7 +43,7 @@
         @current-change="currentChange"
         background
         layout="prev, pager, next"
-        :page-size="8"
+        :page-size="5"
         :page-count="total"
       ></el-pagination>
     </div>
@@ -70,7 +70,7 @@
             </el-form-item>
             <el-form-item label="密码" prop="password">
               <el-col :span="16">
-                <el-input v-model="userInfo.password"></el-input>
+                <el-input v-model="userInfo.password" show-password></el-input>
               </el-col>
             </el-form-item>
             <el-form-item label="所属角色" prop="roleId">
@@ -135,7 +135,7 @@ export default {
     }
   },
   created() {
-    this.loadCurrentPageUser(this.currentPage, 8, "")
+    this.loadCurrentPageUser(this.currentPage, 5, "")
   },
   methods: {
     async loadCurrentPageUser(currentPage, pageSize, input) {
@@ -175,7 +175,7 @@ export default {
             })
             if (status === 200 && data.state===200){
                 this.dialogFormVisible = false
-                this.loadCurrentPageUser(this.currentPage,8,this.searchInput)
+                this.loadCurrentPageUser(this.currentPage,5,this.searchInput)
                 Message.success('修改管理员信息成功！')
             } else{
                 Message.error(data.message)
@@ -186,10 +186,10 @@ export default {
     },
     async currentChange(currentPage) {
       this.currentPage = currentPage
-      this.loadCurrentPageUser(this.currentPage, 8, this.searchInput)
+      this.loadCurrentPageUser(this.currentPage, 5, this.searchInput)
     },
     cancel() {
-      this.loadCurrentPageUser(this.currentPage, 8, this.searchInput)
+      this.loadCurrentPageUser(this.currentPage, 5, this.searchInput)
       this.dialogFormVisible = false
     },
     addAdmin(){
@@ -200,7 +200,7 @@ export default {
     //搜索用户
     search() {
       this.searchInput = this.input
-      this.loadCurrentPageUser(1, 8, this.searchInput)
+      this.loadCurrentPageUser(1, 5, this.searchInput)
     },
   }
 }

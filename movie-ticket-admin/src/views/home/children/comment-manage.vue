@@ -71,7 +71,7 @@
           @current-change="currentChange"
           background
           layout="prev, pager, next"
-          :page-size="8"
+          :page-size="5"
           :page-count="total">
         </el-pagination>
       </div>
@@ -97,7 +97,7 @@
           }
         },
         created(){
-          this.loadCurrentPageComment(this.currentPage,8,'');
+          this.loadCurrentPageComment(this.currentPage,5,'');
         },
         methods: {
           async loadCurrentPageComment(currentPage,pageSize,input){
@@ -115,18 +115,18 @@
           },
           async currentChange(currentPage){
             this.currentPage = currentPage;
-            this.loadCurrentPageComment(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageComment(this.currentPage,5,this.searchInput);
           },
           //搜索评论
           search(){
             this.searchInput = this.input;
-            this.loadCurrentPageComment(1,8,this.searchInput);
+            this.loadCurrentPageComment(1,5,this.searchInput);
           },
           // async handleEdit(index, row) {
           //   console.log(index, row);
           //   let json = await passCurrentComment(row.comment_id,row.movie_id);
           //   if (json.success_code===200){
-          //     this.loadCurrentPageComment(this.currentPage,8,this.searchInput);
+          //     this.loadCurrentPageComment(this.currentPage,5,this.searchInput);
           //     Message.success('评论审核通过！');
           //   }
           // },
@@ -138,7 +138,7 @@
                   commentId: row.id
                 });
                 if (status === 200 && data.state===200){
-                  this.loadCurrentPageComment(this.currentPage,8,this.searchInput);
+                  this.loadCurrentPageComment(this.currentPage,5,this.searchInput);
                   Message.success('删除该评论成功！');
                 }
               }

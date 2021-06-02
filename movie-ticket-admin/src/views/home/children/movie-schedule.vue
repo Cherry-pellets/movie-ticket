@@ -68,7 +68,7 @@
           @current-change="currentChange"
           background
           layout="prev, pager, next"
-          :page-size="8"
+          :page-size="5"
           :page-count="total">
         </el-pagination>
       </div>
@@ -245,7 +245,7 @@
           }
         },
         created(){
-          this.loadCurrentPageMovieSchedule(this.currentPage,8,'');
+          this.loadCurrentPageMovieSchedule(this.currentPage,5,'');
         },
         methods: {
           async loadCurrentPageMovieSchedule(currentPage,pageSize,input){
@@ -261,7 +261,7 @@
           },
           async currentChange(currentPage){
             this.currentPage = currentPage;
-            this.loadCurrentPageMovieSchedule(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageMovieSchedule(this.currentPage,5,this.searchInput);
           },
           handleEdit(index, row) {
             console.log(index, row);
@@ -275,7 +275,7 @@
                 });
                 if (status === 200 && data.state===200){
                   Message.success('删除该电影排片成功！');
-                  this.loadCurrentPageMovieSchedule(this.currentPage,8,this.searchInput);
+                  this.loadCurrentPageMovieSchedule(this.currentPage,5,this.searchInput);
                   console.log(this.tableData);
                 }
               }
@@ -284,7 +284,7 @@
           //搜索电影
           search(){
             this.searchInput = this.input;
-            this.loadCurrentPageMovieSchedule(1,8,this.searchInput);
+            this.loadCurrentPageMovieSchedule(1,5,this.searchInput);
           },
           //新增电影排片
           async addSchedule(){
@@ -345,7 +345,7 @@
               if (status === 200 && data.state===200){
                 Message.success('添加电影排片成功！');
                 this.addDialogFormVisible = false;
-                this.loadCurrentPageMovieSchedule(this.currentPage,8,this.searchInput);
+                this.loadCurrentPageMovieSchedule(this.currentPage,5,this.searchInput);
               }
             } else{
               Message.error('请完成必填内容！');

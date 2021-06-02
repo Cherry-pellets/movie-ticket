@@ -61,7 +61,7 @@
         @current-change="currentChange"
         background
         layout="prev, pager, next"
-        :page-size="8"
+        :page-size="5"
         :page-count="total">
       </el-pagination>
     </div>
@@ -92,7 +92,7 @@
     <!--添加影厅-->
     <div>
       <el-dialog
-        title="添加影厅"
+        title=""
         :visible.sync="addDialogFormVisible"
         :modal-append-to-body="false"
         v-if="addDialogFormVisible"
@@ -204,7 +204,7 @@
           }
         },
         created(){
-          this.loadCurrentPageHall(this.currentPage,8,'');
+          this.loadCurrentPageHall(this.currentPage,5,'');
         },
         methods:{
           async loadCurrentPageHall(currentPage,pageSize,input){
@@ -228,7 +228,7 @@
           },
           async currentChange(currentPage){
             this.currentPage = currentPage;
-            this.loadCurrentPageHall(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageHall(this.currentPage,5,this.searchInput);
           },
           //修改影厅信息
           async manageHallInfo(){
@@ -241,7 +241,7 @@
                   });
                   if (status === 200 && data.state===200){
                     this.dialogFormVisible = false;
-                    this.loadCurrentPageHall(this.currentPage,8,this.searchInput);
+                    this.loadCurrentPageHall(this.currentPage,5,this.searchInput);
                     Message.success('修改影厅信息成功！');
                   } else{
                     Message.error(data.message);
@@ -276,7 +276,7 @@
                 let {data, status} = await deleteHall({hallId: row.id});
                 if (status === 200 && data.state===200){
                   Message.success('删除该影厅成功！');
-                  this.loadCurrentPageHall(this.currentPage,8,this.searchInput);
+                  this.loadCurrentPageHall(this.currentPage,5,this.searchInput);
                 }
               }
             });
@@ -285,10 +285,10 @@
           //搜索影院
           search(){
             this.searchInput = this.input;
-            this.loadCurrentPageHall(1,8,this.searchInput);
+            this.loadCurrentPageHall(1,5,this.searchInput);
           },
           cancel(){
-            this.loadCurrentPageHall(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageHall(this.currentPage,5,this.searchInput);
             this.dialogFormVisible = false;
           },
           async addHall(){
@@ -305,7 +305,7 @@
               if (status === 200 && data.state===200) {
                 this.addDialogFormVisible = false;
                 Message.success('添加影厅成功！');
-                this.loadCurrentPageHall(this.currentPage,8,this.searchInput);
+                this.loadCurrentPageHall(this.currentPage,5,this.searchInput);
               } else if (data.error_code===1){
                 Message.error(data.message);
               }
@@ -378,7 +378,7 @@
                 this.loadingDialogFormVisible = false;
                 this.seatDialogFormVisible = false;
                 Message.success('修改座位信息成功！');
-                this.loadCurrentPageHall(this.currentPage,8,this.searchInput);
+                this.loadCurrentPageHall(this.currentPage,5,this.searchInput);
               }else{
                 Message.error(data.message);
               }

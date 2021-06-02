@@ -70,7 +70,7 @@
           @current-change="currentChange"
           background
           layout="prev, pager, next"
-          :page-size="8"
+          :page-size="5"
           :page-count="total">
         </el-pagination>
       </div>
@@ -167,7 +167,7 @@
           }
         },
         created(){
-          this.loadCurrentPageSnack(this.currentPage,8,'');
+          this.loadCurrentPageSnack(this.currentPage,5,'');
         },
          methods: {
           async loadCurrentPageSnack(pageNum,limit,input){
@@ -185,7 +185,7 @@
           },
           async currentChange(currentPage){
             this.currentPage = currentPage;
-            this.loadCurrentPageSnack(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageSnack(this.currentPage,5,this.searchInput);
           },
           handleEdit(index, row) {
             this.dialogTitle = '编辑小吃信息';
@@ -199,7 +199,7 @@
               if (value==='confirm'){
                 let {data, status} = await deleteSnackInfo({snackId: row.id});
                 if (status === 200 && data.state===200){
-                  this.loadCurrentPageSnack(this.currentPage,8,this.searchInput);
+                  this.loadCurrentPageSnack(this.currentPage,5,this.searchInput);
                   Message.success('删除该小吃成功！');
                 }
               }
@@ -244,7 +244,7 @@
                 } else{
                   let {data, status} = await updateSnackInfo({snack: this.snackInfo});
                   if (status === 200 && data.state===200){
-                    this.loadCurrentPageSnack(this.currentPage,8,this.searchInput);
+                    this.loadCurrentPageSnack(this.currentPage,5,this.searchInput);
                     this.dialogFormVisible = false;
                     Message.success('添加小吃成功！');
                   } else{
@@ -258,7 +258,7 @@
           //搜索小吃
           search(){
             this.searchInput = this.input;
-            this.loadCurrentPageSnack(1,8,this.searchInput);
+            this.loadCurrentPageSnack(1,5,this.searchInput);
           },
           //添加小吃
           addMovie(){
@@ -269,7 +269,7 @@
           },
           cancel(){
             this.dialogFormVisible = false;
-            this.loadCurrentPageSnack(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageSnack(this.currentPage,5,this.searchInput);
           }
         },
     }

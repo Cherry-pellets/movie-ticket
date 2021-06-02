@@ -17,7 +17,7 @@ const routes = [
     path: '/home',
     name: 'home',
     component: () => import('@/views/home'),
-    redirect: '/home/userManage',
+    redirect: '/home/movieManage',
     children: [
       {
         path: 'adminManage',

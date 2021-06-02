@@ -1,0 +1,36 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "pages/subPages/seat/hall",
+          "pathName": "pages/subPages/seat/hall",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/subPages/seat/hall",
+          "pathName": "pages/subPages/seat/hall",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/subPages/search-page/search-page",
+          "pathName": "pages/subPages/search-page/search-page",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

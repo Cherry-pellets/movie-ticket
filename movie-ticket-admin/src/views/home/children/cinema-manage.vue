@@ -73,7 +73,7 @@
           @current-change="currentChange"
           background
           layout="prev, pager, next"
-          :page-size="8"
+          :page-size="5"
           :page-count="total">
         </el-pagination>
       </div>
@@ -189,7 +189,7 @@
           }
         },
         created(){
-          this.loadCurrentPageCinema(this.currentPage,8,'');
+          this.loadCurrentPageCinema(this.currentPage,5,'');
         },
         methods: {
           async loadCurrentPageCinema(currentPage,pageSize,input){
@@ -236,7 +236,7 @@
                   });
                 if (status === 200 && data.state===200){
                   Message.success('删除该影院成功！');
-                  this.loadCurrentPageCinema(this.currentPage,8,this.searchInput);
+                  this.loadCurrentPageCinema(this.currentPage,5,this.searchInput);
                 }
               }
             });
@@ -273,7 +273,7 @@
                     cinema: this.cinemaInfo
                     });
                   if (status === 200 && data.state===200){
-                    this.loadCurrentPageCinema(this.currentPage,8,this.searchInput);
+                    this.loadCurrentPageCinema(this.currentPage,5,this.searchInput);
                     this.dialogFormVisible = false;
                     Message.success('修改影院信息成功！');
                   } else{
@@ -287,7 +287,7 @@
                     cinema: this.cinemaInfo
                     });
                   if (status === 200 && data.state===200){
-                    this.loadCurrentPageCinema(this.currentPage,8,this.searchInput);
+                    this.loadCurrentPageCinema(this.currentPage,5,this.searchInput);
                     this.dialogFormVisible = false;
                     this.addBrandId = '';
                     Message.success('添加影院成功！');
@@ -299,12 +299,12 @@
           },
           async currentChange(currentPage){
             this.currentPage = currentPage;
-            this.loadCurrentPageCinema(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageCinema(this.currentPage,5,this.searchInput);
           },
           //搜索影院
           search(){
             this.searchInput = this.input;
-            this.loadCurrentPageCinema(1,8,this.searchInput);
+            this.loadCurrentPageCinema(1,5,this.searchInput);
           },
           //添加影院
           addCinema(){
@@ -315,7 +315,7 @@
             this.dialogFormVisible = true;
           },
           cancel(){
-            this.loadCurrentPageCinema(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageCinema(this.currentPage,5,this.searchInput);
             this.dialogFormVisible = false;
           }
         },

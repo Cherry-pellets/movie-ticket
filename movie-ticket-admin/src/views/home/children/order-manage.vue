@@ -87,7 +87,7 @@
         @current-change="currentChange"
         background
         layout="prev, pager, next"
-        :page-size="8"
+        :page-size="5"
         :page-count="total">
       </el-pagination>
     </div>
@@ -112,7 +112,7 @@
           }
         },
         created() {
-          this.loadCurrentPageOrder(this.currentPage,8,'');
+          this.loadCurrentPageOrder(this.currentPage,5,'');
         },
         methods:{
           async loadCurrentPageOrder(currentPage,pageSize,input){
@@ -131,12 +131,12 @@
           },
           async currentChange(currentPage){
             this.currentPage = currentPage;
-            this.loadCurrentPageOrder(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageOrder(this.currentPage,5,this.searchInput);
           },
           //搜索订单
           search(){
             this.searchInput = this.input;
-            this.loadCurrentPageOrder(1,8,this.searchInput);
+            this.loadCurrentPageOrder(1,5,this.searchInput);
           },
           handleDelete(index, row) {
             MessageBox.confirm('此操作将永久删除该订单所有信息, 是否继续？','提示').then(async (value)=>{
@@ -146,7 +146,7 @@
                 });
                 if (status === 200 && data.state===200){
                   Message.success('删除该订单成功！');
-                  this.loadCurrentPageOrder(this.currentPage,8,this.searchInput);
+                  this.loadCurrentPageOrder(this.currentPage,5,this.searchInput);
                 }
               }
             });

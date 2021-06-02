@@ -90,7 +90,7 @@
           @current-change="currentChange"
           background
           layout="prev, pager, next"
-          :page-size="8"
+          :page-size="5"
           :page-count="total">
         </el-pagination>
       </div>
@@ -260,7 +260,7 @@
       <!-- loading -->
     <div>
       <el-dialog
-        title="电影添加中..."
+        title=""
         :visible.sync="loadingDialogFormVisible"
         :modal-append-to-body="false"
         v-if="loadingDialogFormVisible"
@@ -423,7 +423,7 @@
           }
         },
         created(){
-          this.loadCurrentPageMovie(this.currentPage,8,'');
+          this.loadCurrentPageMovie(this.currentPage,5,'');
         },
         methods: {
           async loadCurrentPageMovie(pageNum,limit,input){
@@ -440,7 +440,7 @@
           },
           async currentChange(currentPage){
             this.currentPage = currentPage;
-            this.loadCurrentPageMovie(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageMovie(this.currentPage,5,this.searchInput);
           },
           formatShowst(row, column, cellValue){
             var ret = ''  //你想在页面展示的值
@@ -468,7 +468,7 @@
                   movieId: row.id
                 });
                 if (status === 200 && data.state===200){
-                  this.loadCurrentPageMovie(this.currentPage,8,this.searchInput);
+                  this.loadCurrentPageMovie(this.currentPage,5,this.searchInput);
                   Message.success('删除该电影成功！');
                 }
               }
@@ -570,7 +570,7 @@
                     movie: this.movieInfo
                   });
                   if (status === 200 && data.state===200){
-                    this.loadCurrentPageMovie(this.currentPage,8,this.searchInput);
+                    this.loadCurrentPageMovie(this.currentPage,5,this.searchInput);
                     this.dialogFormVisible = false;
                     this.loadingDialogFormVisible  = false;
                     this.newPhotos = [];
@@ -587,7 +587,7 @@
           //搜索电影
           search(){
             this.searchInput = this.input;
-            this.loadCurrentPageMovie(1,8,this.searchInput);
+            this.loadCurrentPageMovie(1,5,this.searchInput);
           },
           //添加电影
           addMovie(){
@@ -599,7 +599,7 @@
           cancel(){
             this.dialogFormVisible = false;
             this.newPhotos = [];
-            this.loadCurrentPageMovie(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageMovie(this.currentPage,5,this.searchInput);
           }
         },
     }

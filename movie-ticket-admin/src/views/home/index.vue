@@ -29,11 +29,7 @@
     <el-row class="container">
       <div class="section">
         <div class="nav-bar">
-          <el-menu default-active="/home/user_manage" class="el-menu-vertical" :router="true">
-              <el-menu-item index="/home/userManage">
-                <i class="el-icon-user-solid"></i>
-                <span slot="title">用户管理</span>
-              </el-menu-item>
+          <el-menu default-active="/home/movieManage" class="el-menu-vertical" :router="true">
               <el-menu-item index="/home/movieManage">
                 <i class="el-icon-s-flag"></i>
                 <span slot="title">电影管理</span>
@@ -65,6 +61,10 @@
               <el-menu-item index="/home/orderManage">
                 <i class="el-icon-s-ticket"></i>
                 <span slot="title">订单管理</span>
+              </el-menu-item>
+              <el-menu-item index="/home/userManage">
+                <i class="el-icon-user-solid"></i>
+                <span slot="title">用户管理</span>
               </el-menu-item>
               <el-menu-item index="/home/adminManage">
                 <i class="el-icon-s-check"></i>
@@ -122,7 +122,7 @@ export default {
 <style scoped>
 #home {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-color: #fff;
 }
 .header{
@@ -158,7 +158,7 @@ export default {
 .nav-bar {
   width: 10%;
   min-width: 200px;
-  border-bottom: 1px solid #e9eaeb;
+  /* border-bottom: 1px solid #e9eaeb; */
 }
 .container .content {
   width: 90%;

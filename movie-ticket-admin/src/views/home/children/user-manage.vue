@@ -42,7 +42,7 @@
         @current-change="currentChange"
         background
         layout="prev, pager, next"
-        :page-size="8"
+        :page-size="5"
         :page-count="total"
       ></el-pagination>
     </div>
@@ -110,7 +110,7 @@ export default {
     };
   },
   created() {
-    this.loadCurrentPageUser(this.currentPage, 8, "");
+    this.loadCurrentPageUser(this.currentPage, 5, "");
   },
   methods: {
     async loadCurrentPageUser(currentPage, pageSize, input) {
@@ -135,7 +135,7 @@ export default {
           });
           if (status ===200 && data.state === 200){
             console.log(data)
-            this.loadCurrentPageUser(this.currentPage,8,this.searchInput);
+            this.loadCurrentPageUser(this.currentPage,5,this.searchInput);
             Message.success('更改成功');
           }
         }
@@ -143,7 +143,7 @@ export default {
     },
     async currentChange(currentPage) {
       this.currentPage = currentPage;
-      this.loadCurrentPageUser(this.currentPage, 8, this.searchInput);
+      this.loadCurrentPageUser(this.currentPage, 5, this.searchInput);
     },
     formatBoolean: function (row, column, cellValue) {
       var ret = ''  //你想在页面展示的值
@@ -155,13 +155,13 @@ export default {
       return ret;
     },
     cancel() {
-      this.loadCurrentPageUser(this.currentPage, 8, this.searchInput);
+      this.loadCurrentPageUser(this.currentPage, 5, this.searchInput);
       this.dialogFormVisible = false;
     },
     //搜索用户
     search() {
       this.searchInput = this.input;
-      this.loadCurrentPageUser(1, 8, this.searchInput);
+      this.loadCurrentPageUser(1, 5, this.searchInput);
     },
     formatTime(time) {
       let lastLogin = new Date(time)
