@@ -332,6 +332,9 @@
               ],
               dra: [
                 { required: true, message: '电影简介信息不能为空', trigger: 'blur' },
+              ],
+              version: [
+                { required: true, message: '片源信息不能为空', trigger: 'blur' },
               ]
             },
             movieShowst:[{

@@ -3,7 +3,7 @@ console.log(process.env)
 // console.log(localStorage.getItem('X-ACCESS-TOKEN'))
 const Instance = axios.create({
   baseURL: process.env.VUE_APP_BASEURL,
-  timeout: 30000,
+  timeout: 600000,
   // headers: {
   //   'X-ACCESS-TOKEN': localStorage.getItem('X-ACCESS-TOKEN') || ''
   // }
