@@ -61,7 +61,6 @@ Page({
           wx.hideLoading()
           // 缺少了城市ID所以返回值缺少showDays，只能自己模拟时间了
           resolve(res.data.data.beanList)
-          console.log(res.data.data)
           if (!res.data.data.beanList.length) {
             _this.setData({
               noSchedule: true,
@@ -86,7 +85,6 @@ Page({
       method: 'POST',
       data: app.globalData.selectCity,
       success: function (res) {
-        console.log(res.data)
         _this.setData({
           cityCinemaInfo: res.data
         })

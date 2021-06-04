@@ -335,6 +335,9 @@
               ],
               version: [
                 { required: true, message: '片源信息不能为空', trigger: 'blur' },
+              ],
+              photos: [
+                { required: true, message: '宣传海报不能为空', trigger: 'blur' },
               ]
             },
             movieShowst:[{

@@ -7,6 +7,7 @@ Page({
    */
   data: {
     movieId: 0,
+    showst: 0,
     img: '',
     user_sc: '期待你的打分',
     stars: ['超烂','较差','一般','较好','不错','完美'],
@@ -26,13 +27,14 @@ Page({
     const movieId = options.movieId;
     const img = options.img;
     const content = options.content;
-    console.log(content)
+    const showst = options.showst
     if (content != 'undefined'){
       const sc = options.sc;
       this.setData({
         key: sc/2,
         comment: content,
-        hasComment: true
+        hasComment: true,
+        showst: showst
       })
     }
     this.setData({
@@ -73,7 +75,6 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success: function (res1) {
-        console.log(res1.data.data.token)
         wx.request({
           url: app.globalData.url +'/Comment/addComment',
           method: 'POST',
@@ -101,8 +102,12 @@ Page({
               pages[pages.length - 2].setData({
                 isComment: true
               })
-              wx.navigateBack({
-                delta: 1
+              // wx.navigateBack({
+              //   delta: 1
+              // })
+              wx.navigateTo({
+                url: '../movie-detail/movie-detail?movieId=' + that.data.movieId
+                    + `&showst=` + that.data.showst,
               })
             }
           }

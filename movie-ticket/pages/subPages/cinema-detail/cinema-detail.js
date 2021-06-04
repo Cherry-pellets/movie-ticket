@@ -48,7 +48,6 @@ Page({
   //选择电影
   selectMovie(e) {
     const movie = e.detail.movie
-    console.log(movie)
     let days = []
     movie.movieDays.forEach(item => {
       days.push({
@@ -67,7 +66,6 @@ Page({
     const day = e.detail.day
     const movie = this.data.movie
     const index = movie.movieDays.findIndex(item => item.day === day)
-    console.log(movie.movieDays)
     this.setData({
       timeList: this.createEndTime(movie.movieDays[index].times, movie.dur, movie.version)
     })
@@ -89,7 +87,6 @@ Page({
   //购票
   buyTicket(e){
     const info = JSON.stringify(e.currentTarget.dataset.info);
-    console.log(info)
     const movie = JSON.stringify(this.data.movie);
     const cinema = JSON.stringify(this.data.cinemaDetail);
     wx.navigateTo({
@@ -106,9 +103,7 @@ Page({
         temp.version = version && version.split(' ').map(item => {
           return item.toUpperCase().replace('V', '')
         })
-        console.log(item.startTime);
         var time = new Date(item.startTime)
-        console.log(time);
         temp.beginTime = `${formatNumber(time.getHours())}:${formatNumber(time.getMinutes())}`
         time = time.setMinutes(time.getMinutes() + dur)
         const endTime = new Date(time)

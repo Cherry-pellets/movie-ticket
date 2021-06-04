@@ -8,7 +8,6 @@ Page({
     cinemaId: null
   },
   onLoad(obj) {
-    console.log(obj)
     const paramsObj = JSON.parse(decodeURIComponent(obj.paramsStr))
     this.initPage(paramsObj)
   },

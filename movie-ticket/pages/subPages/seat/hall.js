@@ -33,9 +33,10 @@ Page({
     const movie = JSON.parse(options.movie);
     const info = JSON.parse(options.info)
     const time = new Date(info.startTime)
-    info.startTime = '今天' + (time.getMonth()+1) + '月' + time.getDate()+'日 '
-      + time.getHours() + ':' + time.getMinutes() + ":" + time.getSeconds()
-                      +"  国语2D"
+    info.startTime = info.startTime
+    // info.startTime = '今天' + (time.getMonth()+1) + '月' + time.getDate()+'日 '
+    //   + time.getHours() + ':' + time.getMinutes() + ":" + time.getSeconds()
+    //                   +"  国语2D"
     this.setData({
       info: info,
       price: info.price,

@@ -28,7 +28,6 @@ Page({
             'token': res1.data.data.token
           },
           success(res) {
-            console.log(res);
             var likeVideos = res.data.data;
             const videoList = [{
               ...obj.video
@@ -56,7 +55,6 @@ Page({
             url: app.globalData.url + `/home/getLikeMovieList?movieId=${obj.id}&cat=${obj.cat}`,
             method: 'GET',
             success(res) {
-              console.log(res);
               var likeVideos = res.data.data;
               const videoList = [{
                 ...obj.video
@@ -176,7 +174,6 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success: function (res1) {
-        console.log(res1.data.data.token)
         wx.request({
           url: app.globalData.url + '/home/updateWish',
           method: 'POST',

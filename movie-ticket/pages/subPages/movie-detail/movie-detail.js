@@ -40,7 +40,6 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success: function (res1) {
-        console.log(res1.data.data.token)
         wx.request({
           url: app.globalData.url +'/home/getIsWish',
           method: 'GET',
@@ -90,8 +89,8 @@ Page({
           success(res){
             if(res.data.state ==200){
               var com = res.data.data;
-              com.comList = _this.formatData(res.data.data.comList);
-              console.log(com);
+              // com.comList = _this.formatData(res.data.data.comList);
+              com.comList = res.data.data.comList;
               _this.setData({
                 comments: com
               })
@@ -106,7 +105,6 @@ Page({
             if (res.data.state == 200) {
               var com = res.data.data;
               com.comList = _this.formatData(res.data.data.comList);
-              console.log(com);
               _this.setData({
                 comments: com
               })
@@ -200,7 +198,9 @@ Page({
   goCommentWrite: function(){
     var that = this
     wx.navigateTo({
-      url: `../comment-write/comment-write?movieId=` + that.data.detailMovie.movie.id + `&img=` + that.data.detailMovie.movie.img + `&sc=` + that.data.comment.sc + `&content=` + that.data.comment.content
+      url: `../comment-write/comment-write?movieId=` + that.data.detailMovie.movie.id
+          + `&img=` + that.data.detailMovie.movie.img + `&sc=` + that.data.comment.sc
+          + `&content=` + that.data.comment.content + `&showst=` + this.data.showst
     })
     
   },
@@ -209,7 +209,6 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success: function (res1) {
-        console.log(res1.data.data.token)
         wx.request({
           url: app.globalData.url +'/home/updateWish',
           method: 'POST',
@@ -251,12 +250,10 @@ Page({
     })
   },
   upApprove: function(e){
-    console.log(e)
     var that = this
     wx.getStorage({
       key: 'userInfo',
       success: function (res1) {
-        console.log(res1.data.data.token)
         wx.request({
           url: app.globalData.url + '/Comment/upApprove',
           method: 'POST',

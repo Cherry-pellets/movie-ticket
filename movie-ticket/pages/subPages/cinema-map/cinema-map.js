@@ -4,7 +4,6 @@ Page({
     markers: []
   },
   onLoad(opt) {
-    console.log(opt)
     this.initData(opt)
   },
   initData(cinemaData) {

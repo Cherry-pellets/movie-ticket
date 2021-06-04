@@ -109,7 +109,6 @@ Component({
         selectServiceId,
         selectHallTypeId
       } = this.data
-      console.log()
       this.triggerEvent('change', {
         serviceId: selectServiceId,
         hallType: selectHallTypeId

@@ -55,7 +55,6 @@ Page({
         success: function(res_1) {
           wx.getUserInfo({
             success: function(res_2) {
-              console.log(res_2)
               wx.request({
                 url: app.globalData.url + '/user/wxLogin',
                 method: 'POST',
@@ -69,9 +68,7 @@ Page({
                   gender: res_2.userInfo.gender
                 },
                 success: function(res) {
-                  console.log(res)
                   const userInfo = res.data
-                  console.log("userInfo:" + userInfo)
                   wx.setStorage({
                     key: 'userInfo',
                     data: userInfo

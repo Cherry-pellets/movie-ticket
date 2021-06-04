@@ -26,7 +26,6 @@ Page({
       wx.getStorage({
         key: 'userInfo',
         success: function (res1) {
-          console.log(res1)
           wx.request({
             url: app.globalData.url + '/order/addOrder',
             method: 'POST',

@@ -32,7 +32,6 @@ Page({
   search(e) {
     var value = e.detail.value
     const _this = this
-    console.log(e.target.dataset.index)
     if(e.target.dataset.index!=null){
       value = _this.data.history[e.target.dataset.index]
     }else{
@@ -57,7 +56,6 @@ Page({
         selectCity: JSON.stringify(app.globalData.selectCity)
       },
       success(res) {
-        console.log(res)
         for (var index in res.data.data.movies) {
           res.data.data.movies[index].rt = util.formatYear(new Date(res.data.data.movies[index].rt))
         }

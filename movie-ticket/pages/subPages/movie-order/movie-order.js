@@ -21,7 +21,6 @@ Page({
             'token': res1.data.data.token
           },
           success(res){
-            console.log(res);
             if(res.data.state === 202){
               wx.showModal({
                 content: '您还未登录',

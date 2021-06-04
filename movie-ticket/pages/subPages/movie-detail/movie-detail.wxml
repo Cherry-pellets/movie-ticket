@@ -27,7 +27,7 @@
             <text wx:if='{{detailMovie.movie.version[1]}}' class='tag-imax'>{{detailMovie.movie.version[1]}}</text>
           </view>
         </view>
-        <view class='movie-time line-ellipsis'>{{detailMovie.movie.src}} / {{detailMovie.movie.dur}}分钟</view>
+        <view class='movie-time line-ellipsis'>{{(detailMovie.movie.src || '') + ' '}}{{detailMovie.movie.dur}}分钟</view>
         <view class='movie-time line-ellipsis'>{{detailMovie.movie.rt}} 上映</view>
       </view>
       <view class="two-button">

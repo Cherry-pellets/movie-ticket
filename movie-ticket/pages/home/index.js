@@ -139,7 +139,6 @@ Page( {
     var px1 = 208 / 750 * wx.getSystemInfoSync().windowWidth;
     var px2 = 376 / 750 * wx.getSystemInfoSync().windowWidth;
     query.selectAll('.swiperH').boundingClientRect(function (rect) {
-      console.log(rect)
       var itemsLength = 0;
       if (that.data.currentTab == 0){
         itemsLength = rect[0].height*that.data.itemsShow.length + px1;

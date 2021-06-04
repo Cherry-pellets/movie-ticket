@@ -83,7 +83,6 @@ Page({
             limit: that.data.limit
           },
           success: function(res){
-            console.log(res.data.data)
             const cmts = that.data.cmts.concat(that.formatData(res.data.data.beanList))
             that.setData({
               hasMore: pageNum < res.data.data.tr,
@@ -102,7 +101,6 @@ Page({
             limit: that.data.limit
           },
           success: function (res) {
-            console.log(res.data.data)
             const cmts = that.data.cmts.concat(that.formatData(res.data.data.beanList))
             that.setData({
               hasMore: pageNum < res.data.data.tr,
@@ -141,12 +139,10 @@ Page({
     return stars
   },
   upApprove: function (e) {
-    console.log(e)
     var that = this
     wx.getStorage({
       key: 'userInfo',
       success: function (res1) {
-        console.log(res1.data.data.token)
         wx.request({
           url: app.globalData.url + '/Comment/upApprove',
           method: 'POST',

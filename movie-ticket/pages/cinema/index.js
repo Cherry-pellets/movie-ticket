@@ -39,7 +39,6 @@ Page({
       method: 'POST',
       data: app.globalData.selectCity,
       success: function (res) {
-        console.log(res.data)
         that.setData({
           cityCinemaInfo: res.data
         })
