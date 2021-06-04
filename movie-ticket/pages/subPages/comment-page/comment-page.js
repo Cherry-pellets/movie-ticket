@@ -120,7 +120,8 @@ Page({
         let temp = { ...item }
         //temp.purchase = !!(temp.tagList && temp.tagList.fixed.some(item => item.id === 4))
         temp.stars = this.formatStar(temp.sc)
-        temp.calcTime = util.calcTime(temp.calcTime)
+        // temp.calcTime = util.calcTime(temp.calcTime)
+        temp.calcTime = temp.calcTime
         return temp
       })
     }

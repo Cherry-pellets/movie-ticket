@@ -59,7 +59,7 @@ public class Admin_AdminUserController {
         user.setUsername(username);
         user.setPassword(password);
         if(map.get("cinemaId") != null) {
-            Integer cinemaId = Integer.parseInt(map.get("cineamId"));
+            Integer cinemaId = Integer.parseInt(map.get("cinemaId"));
             user.setCineamId(cinemaId);
         }
         if(userId!=null)

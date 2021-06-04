@@ -80,15 +80,28 @@ payment() {
                   }
                 })
               }else if (res.data.state === 200) {
-                wx.showToast({
-                  title: '支付成功',
-                })
+                // wx.showToast({
+                //   title: '支付成功',
+                // })
+                // that.setData({
+                //   first: false
+                // })
+                // wx.switchTab({
+                //   url: '/pages/user/user',
+                // })
                 that.setData({
                   first: false
                 })
-                wx.switchTab({
-                  url: '/pages/user/user',
+                wx.showToast({
+                  title: '支付成功',
+                  duration: 3000,
+                  mask: true
                 })
+                setTimeout(() => {
+                  wx.switchTab({
+                    url: '/pages/user/user',
+                  })
+                }, 2000)
               } else {
                 wx.showToast({
                   title: '支付失败',

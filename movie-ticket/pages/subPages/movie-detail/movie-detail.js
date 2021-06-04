@@ -121,7 +121,8 @@ Page({
       list = arr.map(item => {
         let temp = { ...item }
         temp.stars = this.formatStar(temp.sc/2)
-        temp.calcTime = util.calcTime(temp.calcTime)
+        // temp.calcTime = util.calcTime(temp.calcTime)
+        temp.calcTime = temp.calcTime
         return temp
       })
     }

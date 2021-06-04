@@ -21,6 +21,7 @@ export const getCurrentPageAdmin = (data) => {
     })
 }
 export const updateAdminInfo = (data) => {
+    console.log(data)
     return axios({
         url: '/admin/auser/updateInfo',
         method: 'POST',

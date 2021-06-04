@@ -80,9 +80,9 @@
               </el-select>
             </el-col>
           </el-form-item>
-          <el-form-item label="所属影院" prop="cineamId">
+          <el-form-item label="所属影院" prop="cinemaId">
             <el-col :span="18">
-              <el-select v-model="userInfo.cineamId" placeholder="请选择影院" style="width: 100%">
+              <el-select v-model="userInfo.cinemaId" placeholder="请选择影院" style="width: 100%">
                 <el-option v-for="(item,index) in cinemaList" :key="index" :label="item.nm" :value="item.id"></el-option>
               </el-select>
             </el-col>
@@ -171,7 +171,7 @@ export default {
               username: this.userInfo.username,
               password: this.userInfo.password,
               roleId: this.userInfo.roleId,
-              cineamId: this.userInfo.cineamId
+              cinemaId: this.userInfo.cinemaId
             })
             if (status === 200 && data.state===200){
                 this.dialogFormVisible = false
